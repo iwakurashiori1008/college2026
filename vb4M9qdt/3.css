@@ -1,0 +1,310 @@
+#monitor {
+    background-color: #FFF2CD;
+    position: relative;
+    overflow: hidden; 
+    overflow-y: scroll;
+}
+@media(min-width:1000px){
+    #phone-frame{
+        width: 100%;
+        height:100%;
+        max-width: 480px;
+        position: relative;
+        overflow: hidden;
+    }
+    .ui-panel{
+        height: 300px !important;
+    }
+} 
+/*===============
+    仲間を増やそう
+===============*/
+#phone-frame {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* カウンター */
+.stage-counter{
+    width:35%;
+    position:absolute;
+    top:10px;
+    display:flex;
+    border:2px solid #323232;
+    align-items: center;
+    background-color:#FFF2B0;
+    justify-content: space-between;
+    font-family: 'kiwami';
+    font-size:12px;
+    padding:5px;
+    border-radius:8px;
+    .board{
+        width:70%;
+        margin:0 auto;
+        padding:5px 0;
+        background-color:white;
+        border-radius:3px;
+        text-align: center;
+    }
+}
+[class^="pin_"]{
+    width: 5px;
+    height: 5px;
+    border-radius: 50px;
+    background-color: #FDCB6E;
+    border: 2px solid #323232;
+}
+.pin_left{margin-left:3%;}.pin_right{margin-right:3%;}
+
+/* 横スライドコンテナ */
+#game-world {
+    display: flex;
+    align-items: center;
+    width: 600%; 
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+section {
+    width:95%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 上半分：バトルグラフィック */
+.battle-scene {
+    position:relative;
+    width:95%;
+    margin:0 auto;
+    border-radius:15px;
+    background-image:url('https://github.com/iwakurashiori1008/SNS_-/blob/main/battle_background.png?raw=true');
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border:3px solid #323232;
+    padding-top: 100px;
+}
+
+/*⬇︎なし*/
+.sprite { text-align: center; font-family: 'mochi';font-size:15px;}
+.sprite-icon { width:25%; padding-bottom:5px;margin:0 auto; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
+/*⬆︎なし*/
+
+.enemy-info { 
+    width: 150px; 
+    margin:0 auto;
+    margin-bottom: 10px; 
+    background-color: white;
+    padding:10px;
+    border-radius:8px;
+    border:2px solid #323232;
+    box-shadow:0 3px #323232;
+}
+.hp-bar { height: 10px; background: #333; border: 2px solid #323232; position: relative; border-radius:50px; margin-bottom:8px;}
+.hp-fill { width: 0%; height: 100%; background: #FF85A2; transition: 0.8s;  border-radius:15px;}
+
+
+/* ハートの演出用（画像差し替え版） */
+.heart-effect {
+    position: absolute;
+    pointer-events: none;
+    z-index: 500;
+    animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% { 
+        transform: translateY(0) scale(0.8); 
+        opacity: 0; 
+    }
+    20% { 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(-80px) scale(1.2); 
+        opacity: 0; 
+    }
+}
+
+
+/* 下半分：UIパネル */
+.ui-panel {
+    width: 95%;          
+    margin: 20px auto 0; 
+    height: 250px; 
+    border-radius: 15px;
+    overflow-y: scroll;
+    font-family: 'mochi';
+    letter-spacing: 1px;
+    font-size: 13px;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box; 
+    -ms-overflow-style: none;
+    background-color:#323232;
+    outline-offset: -5px;
+    outline: 2px solid white;
+
+    
+}
+.ui-panel::-webkit-scrollbar{
+  display: none;
+}
+.command-list {
+    width:100%;
+    margin:0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-command {
+    background-color: transparent;
+    border:2px solid white;
+    border-radius:50px;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+   font-family:'mochi';
+   font-size:14px;
+    cursor: pointer;
+}
+.btn-command:hover{color:#FFD600; }
+.btn-command::before { content: "▶ "; float:left;}
+.attack{font-size:13px;color:#FFD600;line-height: 1.5;}
+.message-box{line-height:1.8;}
+
+.next-btn {
+    width:70%;
+    margin:0 auto;
+    background:#FFD600;
+    color: #000;
+    border: none;
+    border-radius:12px;
+    border-radius:50px;
+    font-size:15px;
+    margin-top:20px;
+    padding: 12px 0;
+    font-family: 'mochi';
+    font-weight: bold;
+    display: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.answer{
+    width:50%;
+    text-align: center;
+    margin:0 auto;
+    border-bottom:2px solid white;
+    font-family:'noto';
+    font-weight:bold;
+}
+.answer_text{
+    font-family:'noto';
+    font-size:13px;
+    letter-spacing: 0;
+    padding-top:5px;
+}
+
+/* 全クリアポップアップ */
+#clear-popup {
+    display:none;
+    position: absolute; /* 親の#monitorに対して絶対配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    min-height: 100vh; 
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: none; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+
+.popup-content {
+    width:70%;
+    padding:15px;
+    background-color:#FFD600;
+    border:3px solid #323232;
+    box-shadow:0 2px #323232;
+    outline-offset: -10px;
+    border-radius:15px;
+    font-family:'mochi';
+    letter-spacing: 1px;
+    .head{
+        font-family: 'donguri';
+        font-size:35px;
+        padding-bottom:15px;
+    }
+    .popup_group{
+        background-color:white;
+        border-radius:15px;
+        padding:15px 0;
+    }
+    p{
+        font-size:13px;
+        letter-spacing: 1px;
+        line-height:1.5;
+    }
+}
+.button_group .btn-command {
+    width: 75%;
+    margin:0 auto;           /* グループの幅いっぱいに広げる */
+    display: block;    
+    font-size:12px;    /* ブロック要素にして幅指定を確実に効かせる */
+    box-sizing: border-box; /* パディングを含めた幅を100%にする（はみ出し防止） */
+    text-align: center;    /* ボタン内のテキストを中央に寄せる */
+    margin-bottom: 5px; 
+    background-color:#323232;  /* ボタン同士の隙間を作る */
+}
+
+
+/* アニメーション */
+.shake { animation: shake 0.4s; }
+@keyframes shake {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-10px, 5px); }
+    40% { transform: translate(10px, -5px); }
+    60% { transform: translate(-10px, -5px); }
+    80% { transform: translate(10px, 5px); }
+}
+
+/* Xシェアボタンのスタイル */
+.share-button {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: opacity 0.3s; /* ホバー時の動きを滑らかに */
+}
+
+/* マウスを乗せた時の演出 */
+.share-button:hover {
+  opacity: 0.8;
+  color: #fff; /* リンクの色が変わるのを防ぐ */
+}
+
+@media(min-width:1000px){
+    #page_content{
+        top:
+    }
+}

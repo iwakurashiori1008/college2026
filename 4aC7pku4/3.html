@@ -1,0 +1,408 @@
+<!--心理テクニック-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS攻略ステータス</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="3.css">
+</head>
+<body>
+    <div id="hamburger">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span></span>
+        </label>
+        <nav class="menu-content">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="index.html"><p class="btn_level" id="top">TOP</p>　ぼうけんのはじまり</a></li>
+                <li class="menu-item"><a href="1.html"><p class="btn_level">STAGE.1</p>　そうびをととのえる</a></li>
+                <li class="menu-item"><a href="2.html"><p class="btn_level">STAGE.2</p>　タカラのちず</a></li>
+                <li class="menu-item"><a href="3.html"><p class="btn_level">STAGE.3</p>　<p class="denki">仲間</p>をふやそう</a></li>
+                <li class="menu-item"><a href="4.html"><p class="btn_level">STAGE.4</p>　<p class="denki">旅</p>のきろく</a></li>
+                <li class="menu-item"><a href="5.html"><p class="btn_level">STAGE.5</p>　Q and A</a></li>
+            </ul>
+        </nav>
+    </div>
+
+<div id="monitor">
+    <div id="loading-screen">
+        <div class="loading-text">
+            <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+        </div>
+    </div>
+    
+    <div id="page_content">
+        <div class="title"><p class="denki">仲間</p>をふやそう</div><!--あれば-->
+        <div class="text_SS">
+            冒険を支えてくれるのは、いつだって仲間(ファン)の存在。<br>
+            コメントの返し方やDMでの距離の縮め方など、心理学に基づいた「愛される秘訣」を身につけよう。
+            ちょっとした言葉の選び方で、ただのフォロワーが熱狂的なファンに変わるかも？
+            全問正解で、最強の愛されスキルを手に入れてね！
+        </div>
+    </div>
+<!--==========⬇︎【ページ要素】⬇︎==========-->
+<!--<div id="phone-frame">-->
+    <div id="game-world">  
+        <!-- STAGE 1: ツァイガルニク -->
+        <section id="st1">
+            <div class="battle-scene">
+                <div class="stage-counter">
+                    <div class="pin_left"></div>
+                    <div class="board">BATTLE 1/6</div>
+                    <div class="pin_right"></div>
+                </div>
+
+                <div class="sprite enemy">
+                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/parson_1.png?raw=true" class="sprite-icon">
+                    <div class="enemy-info"><div class="hp-bar"><div class="hp-fill" id="hp1"></div></div><p>あき性リスナー</p></div>
+                </div>
+            </div>
+            <div class="ui-border">
+                <div class="ui-panel">
+                    <div class="message-box" id="msg1">
+                        「次、誰のはいしん行こっかな〜」<br>
+                        あいさつもそこそこに、次のライバーへ<br>ハシゴしようとしているぞ。<br>
+                        君のトークで引き止めろ！
+                    </div>
+                    <div class="command-list" id="cmd1">
+                        <button class="btn-command" onclick="atk(1, 1, '<br>「実は…」と途中で止めることで続きが気になって仕方なくなる心理術だ！')">
+                            「話したいことあったけど、また明日！」
+                        </button>
+                        <button class="btn-command" onclick="atk(1, 0)"> 
+                            「そういえば、こんなことがあって〜」
+                        </button>
+                    </div>
+                    <button class="next-btn" id="nb1" onclick="go(1)">次のバトルへ ▶</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 2: ベネフィット -->
+        <section id="st2">
+            <div class="battle-scene">
+                <div class="stage-counter">
+                    <div class="pin_left"></div>
+                    <div class="board">BATTLE 2/6</div>
+                    <div class="pin_right"></div>
+                </div>
+
+                <div class="sprite enemy">
+                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/parson_2.png?raw=true" class="sprite-icon">
+                    <div class="enemy-info"><div class="hp-bar"><div class="hp-fill" id="hp2"></div></div><p>ミクチャリスナー</p></div>
+                </div>
+            </div>
+            <div class="ui-panel">
+                <div class="message-box" id="msg2">
+                    「面白そうだけど...見るだけでいいかな」<br>
+                    初見さんが来たけど、まだSNSをチェックしていないぞ！<br>
+                    君の一言でフォローさせよう！
+                </div>
+                <div class="command-list" id="cmd2">
+                    <button class="btn-command" onclick="atk(2, 0)">
+                        「実はSNSもやってます！」
+                    </button>
+                    <button class="btn-command" onclick="atk(2, 1, '【予言の鏡】習得！<br>相手が「どうなれるか」を伝えるのがコツ。褒められる自分を想像させよう！')">
+                        「リプ返してるよ！SNSでも仲良くしてね」
+                    </button>
+                </div>
+                <button class="next-btn" id="nb2" onclick="go(2)">次のバトルへ ▶</button>
+            </div>
+        </section>
+
+        <!-- STAGE 3: バンドワゴン -->
+        <section id="st3">
+            <div class="battle-scene">
+                <div class="stage-counter">
+                    <div class="pin_left"></div>
+                    <div class="board">BATTLE 3/6</div>
+                    <div class="pin_right"></div>
+                </div>
+
+                <div class="sprite enemy">
+                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/parson_3.png?raw=true" class="sprite-icon">
+                    <div class="enemy-info"><div class="hp-bar"><div class="hp-fill" id="hp3"></div></div><p>ROMせんリスナー</p></div>
+                </div>
+            </div>
+            <div class="ui-panel">
+                <div class="message-box" id="msg3">
+                    「このライバー、キテるの？まだファン数少なくない？」<br>
+                    しっぱいしたくない、しんちょうはリスナーが、<br>
+                    ようすをうかがっている！<br>
+                    はいしんの空気を変えろ！
+                </div>
+                <div class="command-list" id="cmd3">
+                    <button class="btn-command" onclick="atk(3, 1, '【熱狂の行進】習得！<br>「みんなが使ってる」と聞くと安心する心理。人気があることをアピールしよう！')">
+                        「最近ファンになってくれる人多くて〜」
+                    </button>
+                    <button class="btn-command" onclick="atk(3, 0)">
+                        「今おしたら、『こさん』だよ！」
+                    </button>
+                </div>
+                <button class="next-btn" id="nb3" onclick="go(3)">次のバトルへ ▶</button>
+            </div>
+        </section>
+
+        <!-- STAGE 4: バーナム -->
+        <section id="st4">
+            <div class="battle-scene">
+                <div class="stage-counter">
+                    <div class="pin_left"></div>
+                    <div class="board">BATTLE 4/6</div>
+                    <div class="pin_right"></div>
+                </div>
+
+                <div class="sprite enemy">
+                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/parson_4.png?raw=true" class="sprite-icon">
+                    <div class="enemy-info"><div class="hp-bar"><div class="hp-fill" id="hp4"></div></div><p>未知の初見リスナー</p></div>
+                </div>
+            </div>
+            <div class="ui-panel">
+                <div class="message-box" id="msg4">
+                    初見さんがコメントしてくれた！<br>
+                    ファンになってもらう大チャンス！<br>
+                    一気に心のきょりをちぢめよう。
+                </div>
+                <div class="command-list" id="cmd4">
+                    <button class="btn-command" onclick="atk(4, 1, '【共鳴の瞳】習得！<br>誰にでも当てはまる広い内容で「自分のことだ！」と特別に感じさせる技術だ。')">
+                        「もしかして、少し気をつかっちゃうタイプ？」
+                    </button>
+                    <button class="btn-command" onclick="atk(4, 0)">
+                        「〇〇さんって、めっちゃやさしいですね！」
+                    </button>
+                </div>
+                <button class="next-btn" id="nb4" onclick="go(4)">次のバトルへ ▶</button>
+            </div>
+        </section>
+
+        <!-- STAGE 5: カリギュラ -->
+        <section id="st5">
+            <div class="battle-scene">
+                <div class="stage-counter">
+                    <div class="pin_left"></div>
+                    <div class="board">BATTLE 5/6</div>
+                    <div class="pin_right"></div>
+                </div>
+                <div class="sprite enemy">
+                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/parson_5.png?raw=true" class="sprite-icon">
+                    <div class="enemy-info"><div class="hp-bar"><div class="hp-fill" id="hp5"></div></div><p>ドライなリスナー</p></div>
+                </div>
+            </div>
+            <div class="ui-panel">
+                <div class="message-box" id="msg5">
+                    「おうえんなんて、ムービーで十分でしょ？」<br>
+                    こうりつちゅうのドライなリスナーが、<br>
+                    通知をスルーしようとしている！<br>
+                    はいしんタイトルで引き付けろ！
+                </div>
+                <div class="command-list" id="cmd5">
+                    <button class="btn-command" onclick="atk(5, 0)">
+                        「NGなしのしつもんコーナー！」
+                    </button>
+                    <button class="btn-command" onclick="atk(5, 1)">
+                        「初出しトーク！ゆうきがないやつは見るな！」
+                    </button>
+                </div>
+                <button class="next-btn" id="nb5" onclick="go(5)">最後のバトルへ ▶</button>
+            </div>
+        </section>
+
+        <!-- STAGE 6: ザイアンス -->
+        <section id="st6">
+            <div class="battle-scene">
+                
+                <div class="sprite enemy">
+                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/parson_6.png?raw=true" class="sprite-icon">
+                    <div class="enemy-info"><div class="hp-bar"><div class="hp-fill" id="hp6"></div></div><p>VIPリスナー</p></div>
+                </div>
+            </div>
+            <div class="ui-panel">
+                <div class="message-box" id="msg6">
+                    「おししか、かたん！」<br>
+                    おししか見ていない、VIPリスナーを味方につけよう！<br>
+                    どんな作戦を立てようか？<br>
+                </div>
+                <div class="command-list" id="cmd6">
+                    <button class="btn-command" onclick="atk(6, 1,)">
+                        おしライバーのはいしんに毎日行く
+                    </button>
+                    <button class="btn-command" onclick="atk(6, 0)">
+                        VIPリスナーにSNSであいさつ
+                    </button>
+                </div>
+                <button class="next-btn" id="nb6" onclick="showFinalClear()">クエストを完了する！</button>
+            </div>
+        </section>
+    </div>
+<!--</div>-->
+<!-- 全クリアポップアップ　✅編集する！！！！！！ -->
+<div id="clear-popup">
+    <div class="popup-content">
+        <p class="head">BATTLE<br>COMPLETE!</p>
+
+        <div class="popup_group">
+            <p>
+                あなたは6つの心理テクニックを<br>
+                すべてマスターした！<br>
+                <br>
+                これでファンを仲間にする<br>じゅんびはととのった！
+            </p>
+            <div class="button_group">
+                <button class="btn-command" style="text-align:center; margin-top:20px;" onclick="resetGame()">最初からやり直す</button>
+                <a href="index.html"><div class="btn-command">TOPページへもどる</div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+<!--==========⬆︎【ページ要素】⬆︎==========-->
+</div>
+
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/logo_black.png?raw=true" id="logo_mixch">
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%82%B1%E3%82%99%E3%83%BC%E3%83%A0%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A06.png?raw=true" id="game_frame">
+
+<script>
+    // --- 解説テキストのデータベース
+    const skillData = {
+    1: `
+        <p class="answer">ツァイガルニク効果</p>
+        <div class="answer_text">
+            全部終わったことより、途中で止まっていることの方が
+            気になってしまうこと。<br>
+            最後に「明日は大事なお知らせがあるよ！」と言って
+            配信を終わらせてみたり、続きが気になる工夫してみよう。
+        </div>
+    `,
+    2: `
+        <p class="answer">ベネフィット効果</p>
+        <div class="answer_text">
+            その商品や行動によって、
+            自分に「どんな良い未来が待っているか」を想像させること。<br>
+            「おすすめメイク術を教えます」ではなく、
+            「このメイクをすると、明日『可愛くなった？』って聞かれちゃうかも！」のように、 相手のハッピーな未来を伝えてみよう！
+        </div>
+    `,
+    3: `
+        <p class="answer">バンドワゴン効果</p>
+        <div class="answer_text">
+            「みんなが持っている」「流行っている」と聞くと、
+            自分もほしくなったり安心しちゃうよね。<br>
+            「今、これ使ってる子が急増中！」「視聴者のみんなも〇〇って言ってるよ！」と紹介して、
+            人気があることをアピールしてみよう。
+        </div>
+    `,
+    4: `
+        <p class="answer">バーナム効果</p>
+        <div class="answer_text">
+            誰にでも当てはまるような広い内容なのに、
+            「自分のことだ！」と特別に感じてしまうこと。<br>
+            「最近、ちょっと疲れが溜まってない？」
+            「大好きなリスナーさんに〇〇って言ってもらったんだ！」など、
+            多くの人が共感しそうな言葉を投げかけて、親近感を持ってもらおう。
+        </div>
+    `,
+    5: `
+        <p class="answer">カリギュラ効果</p>
+        <div class="answer_text">
+        「ダメ！」「見るな！」と禁止されるほど、やりたくなってしまうのが、人間の性。<br>
+        「本当は教えたくないマル秘術！」「◯人限定！リクエスト受付中！」
+        みたいに、期間限定感を持たせるタイトルをつけてみよう。
+        </div>
+    `,
+    6: `
+        <p class="answer">ザイアンス効果</p>
+        <div class="answer_text">
+            何度も会ったり、目にしたりするうちに、だんだん好きになってしまうこと。<br>
+            思ったように成果が出なくても、すぐに諦めるのではなく、努力を継続してみよう。<br>
+            君の頑張りは、必ず誰かが見てくれているよ！
+        </div>
+    `
+};
+    function atk(stage, isHit) {
+        const msg = document.getElementById('msg' + stage);
+        const hp = document.getElementById('hp' + stage);
+        const enemy = document.querySelector('#st' + stage + ' .enemy');
+        const cmd = document.getElementById('cmd' + stage);
+        const nxt = document.getElementById('nb' + stage);
+
+        if(isHit) {
+            enemy.classList.add('shake');
+            hp.style.width = '100%'; 
+
+            // --- ハート演出の修正 ---
+            for (let i = 0; i < 3; i++) {
+                const heart = document.createElement('div');
+                
+                // ★ ここを画像タグに差し替え！ (widthでサイズ調整)
+                heart.innerHTML = '<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/fukidashi_heart_pink_white.png?raw=true" style="width:30px; height:auto;">'; 
+                
+                heart.className = 'heart-effect';
+                
+                const rect = enemy.getBoundingClientRect();
+                // スクロール位置も考慮した座標計算
+                const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+                const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+                heart.style.left = (rect.left + scrollX + rect.width / 2 + (Math.random() - 0.5) * 60) + 'px';
+                heart.style.top = (rect.top + scrollY + (Math.random() * 30)) + 'px';
+                
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            }
+            // ----------------------
+
+            const description = skillData[stage];
+            msg.innerHTML = `<span class="attack">★こうかは ばつぐんだ！<br>リスナーが 仲間 になった！</span><br><div style="margin-top:10px; font-size:13px; line-height:1.6;">${description}</div>`;
+            
+            if(cmd) cmd.style.display = 'none';
+            if(nxt) nxt.style.display = 'block';
+        } else {
+            msg.innerHTML = "▼ミス！<br> あいてに「りょうさんがた ライバー」だと おもわれてしまった！<br>もういちど 正しい ほうほうを えらぼう。";
+        }
+        setTimeout(() => enemy.classList.remove('shake'), 500);
+    }
+
+    function go(currentStage) {
+        const world = document.getElementById('game-world');
+        const stageNumText = document.getElementById('stage-num'); 
+
+        // 画面移動
+        const movePercent = currentStage * (100 / 6); 
+        world.style.transform = `translateX(-${movePercent}%)`;
+
+        // ステージ番号更新
+        if (stageNumText) {
+            stageNumText.innerText = `BATTLE ${currentStage + 1}/6`;
+        }
+    }
+    
+    function showFinalClear() {
+    // 1. ポップアップを表示
+    const popup = document.getElementById('clear-popup');
+    popup.style.display = 'flex';
+
+    // 2. モニターのスクロール位置を強制的に一番上に戻す
+    // これにより、top:0 に配置されたポップアップが目の前に来ます
+    document.getElementById('monitor').scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    }   
+
+    function resetGame() {
+        location.reload();
+    }
+    localStorage.setItem('3', 'read');
+    
+    //ローディング画面
+    window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('loaded');
+    }, 1800);
+    });
+</script>
+</body>
+</html>

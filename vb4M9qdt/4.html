@@ -1,0 +1,911 @@
+<!--分析ツール-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS攻略ステータス</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="4.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div id="hamburger">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span></span>
+        </label>
+        <nav class="menu-content">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="index.html"><p class="btn_level" id="top">TOP</p>　ぼうけんのはじまり</a></li>
+                <li class="menu-item"><a href="1.html"><p class="btn_level">STAGE.1</p>　そうびをととのえる</a></li>
+                <li class="menu-item"><a href="2.html"><p class="btn_level">STAGE.2</p>　タカラのちず</a></li>
+                <li class="menu-item"><a href="3.html"><p class="btn_level">STAGE.3</p>　<p class="denki">仲間</p>をふやそう</a></li>
+                <li class="menu-item"><a href="4.html"><p class="btn_level">STAGE.4</p>　<p class="denki">旅</p>のきろく</a></li>
+                <li class="menu-item"><a href="5.html"><p class="btn_level">STAGE.5</p>　Q and A</a></li>
+            </ul>
+        </nav>
+    </div>
+
+<div id="monitor">
+    <div id="loading-screen">
+        <div class="loading-text">
+            <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+        </div>
+    </div>
+
+    <div id="page_content">
+        <div class="title"><p class="denki">旅</p>のきろく</div><!--あれば-->
+        <div class="text_SS">
+            投稿して終わりじゃもったいない！<br>
+            このページは、君が歩んできた足跡を記録する「冒険日誌」だよ。<br>
+            失敗も成功も、すべては成長するための貴重な経験値。自分だけの勝ち筋を見つけて、さらに大きなステージへとレベルアップしていこう！
+        </div>
+    </div>
+<!--==========⬇︎【ページ要素】⬇︎==========-->
+
+<div class="level-section" id="meter-ui">
+    <div class="level-header">
+        <div class="current-rank" id="rank-name">称号: 読み込み中...</div>
+        <div class="level-num">Lv.<span id="lv-num">1</span></div>
+    </div>
+    <div class="meter-container">
+        <div class="meter-bar" id="exp-bar"></div>
+    </div>
+    <div class="exp-text">NEXT: <span id="next-exp">---</span> exp</div>
+</div>
+
+<div class="account-tabs">
+    <div class="sticky-tab tab-x active" onclick="changeAccount('X')">X</div>
+    <div class="sticky-tab tab-insta" onclick="changeAccount('Instagram')">Instagram</div>
+    <div class="sticky-tab tab-tiktok" onclick="changeAccount('TikTok')">TikTok</div>
+</div>
+
+<!--分析ツール-->
+<div id="analysis_group">
+    <div id="content_1">
+        <span id="display-account-name" style="display:none;"></span>
+
+        <div class="input-section">
+            <div class="line"><div class="left"><p class="tag">日付</p></div><input type="date" id="date" class="right"></div>
+            <div class="line"><div class="left"><p class="tag">フォロワー数</p></div><input type="number" id="followers" class="right"></div>
+            <div class="line"><div class="left"><p class="tag">インプ数</p></div><input type="number" id="impressions" class="right"></div>
+            <div class="line"><div class="left"><p class="tag">プロフ表示</p></div><input type="number" id="profileViews" class="right"></div>
+            <div class="line"><div class="left"><p class="tag">投稿内容</p></div><textarea id="content" rows="1" class="right" placeholder="一言メモ"></textarea></div>
+            <div class="enter"><button onclick="addData()">データを追加して成長する！</button></div>
+        </div>
+    </div>
+
+    <div class="tab-switch">
+        <input type="radio" name="tab-group" id="tab-left" checked onchange="switchGraphTab('impRate')">
+        <input type="radio" name="tab-group" id="tab-right" onchange="switchGraphTab('profViews')">
+        <label class="tab-label" for="tab-left">インプレッション率</label>
+        <label class="tab-label" for="tab-right">プロフィール表示数</label>
+        <div class="selection-slider"></div>
+    </div>
+
+    <div id="capture-area">
+        <div class="chart-container"><canvas id="analyticsChart"></canvas></div>
+        <button class="save-btn" onclick="exportChartImage()">グラフを画像保存</button>
+    </div>
+
+    <div id="detail-box">
+        <div class="detail_item">
+            <div id="detail-text"></div>
+            <div style="text-align:right; margin-top:10px;"><button class="delete-btn" id="delete-action">削除</button></div>
+        </div>
+    </div>
+</div>
+
+
+<!--❗️CAUTION❗️-->
+<div id="space_L"></div>
+
+<div class="popup_outline">
+    <div id="caution_popup">
+        <div class="title_group">
+            <p class="caution">CAUTION!</p><br>
+            <p class="popup_title">記録する上での注意事項</p>
+        </div>
+
+        <div class="list_group">
+            <p class="head">グラフの保管について</p>
+            <ul>
+                <li>このグラフには、最大90件までのデータを記録できるよ。</li>
+                <li>90件を超えると、古い記録から順番に上書きされていくよ。</li>
+                <li>この記録を残しておきたいときは、こまめに「グラフを画像保存」ボタンを押して、スマホやPCに保管しておこう！</li>
+            </ul>
+            <div id="space_M"></div>
+
+            <p class="head">データの記録保持について</p>
+            <ul>
+                <li>記録したデータは、今使っているブラウザの中に保存されているよ。</li>
+                <li><strong>ブラウザの履歴やキャッシュ(保存データ)</strong>をまるごと削除してしまうと、これまでの<strong>グラフも一緒に消えてしまう</strong>ので気をつけよう！</li>
+                <li>機種変をしたり、別のブラウザで開いたりしたときも、<strong>データは引き継がれない</strong>ので注意！</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="space_L"></div>
+
+<!--🦀分析の仕方🦀-->
+<div id="content_2">
+    <div id="hole_group">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+
+    <div id="intro">
+        <div class="title">自分の投稿を分析しよう</div>
+        <div class="text">
+            あなたの投稿がどれくらい<br>
+            「効率よく」ファンに届いているかをチェックしてみよう。<br>
+            その目安になるのが「インプレッション率」という数字だよ。<br>
+            <br>
+            この数字が高いほど、<br>あなたの投稿がフォロワーさんの目に留まりやすく、<br>興味を持ってもらえている証拠。<br>
+            <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/%E8%A8%88%E7%AE%97%E5%BC%8F.png?raw=true" class="item" alt="計算式">
+            このツールでは、「フォロワー数」と「インプレッション数」を<br>入力すると、自動で計算してグラフになるよ！<br>
+            <br>
+            自分の投稿がどれくらい「ヒット」しているのか、<br>
+            さっそく数字を入れて確かめてみよう！
+        </div>
+    </div>
+
+    <div id="space" style="height:80px"></div>
+
+    <!--インプレッション確認手順ー-->
+    <div class="group_intro" id="imp">
+        <div class="head">
+            <div class="border"id="imp"></div>
+            <p>インプレッション数を確認しよう</p>
+            <div class="border"></div>
+        </div>
+        <div class="text">
+            インプレッション数はアプリによって、表記や確認手順が違うよ。<br>
+            ステップを確認して、自分の投稿の反応を確かめてみてね。
+        </div>
+    </div>
+    <div class="sns-accordion-container">
+
+        <details class="sns-details x-acc"><!--Xのインプ確認方法-->
+            <summary class="sns-summary"><h>X</h>の確認手順を見る</summary>
+            <div class="sns-content">
+                <ul class="step-list">
+                    <li class="step-item"><span class="step-num">1</span>プロフィール画面から、チェックしたい投稿を表示。</li>
+                    <li class="step-item"><span class="step-num">2</span>ポストの右下にある、<strong>「グラフアイコン」</strong>を探そう。</li>
+                    <li class="step-item"><span class="step-num">3</span>タップして、今の<strong>インプレッション数</strong>を確認しよう。</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="sns-details insta-acc"><!--Instaのインプ確認方法-->
+            <summary class="sns-summary"><h>Instagram</h>の確認手順を見る</summary>
+            <div class="sns-content">
+                <ul class="step-list">
+                    <li class="step-item"><span class="step-num">1</span>確認したい自分の投稿（写真やリール）を表示しよう。</li>
+                    <li class="step-item"><span class="step-num">2</span>画像の下にある「インサイトを見る」という文字をタップ。</li>
+                    <li class="step-item"><span class="step-num">3</span><span>「概要」のタブにある<strong>「閲覧数(総表示回数)」</strong>がInstagramのインプレッション数になるよ。</span></li>
+                </ul>
+                <div class="point">
+                    <div class="point_head_group">
+                        <p class="head">POINT</p>
+                        <p class="text" id="add">『インサイト』設定をしよう</p>
+                    </div>
+                    <p class="text">
+                        「インサイトを見る」というボタンが出てこないときは、アカウントを「プロアカウント」に切り替える必要があるよ。<br>
+                        無料で誰でもできるから、今のうちに設定しておこう！
+                    </p>
+                    <!--⬇︎手順⬇︎-->
+                    <div class="point_group">
+                        <p class="head"> 設定手順 </p>
+                        プロフィール画面の右上にある「≡」をタップ。<br>
+                        <div id="under">▼</div>
+                        「設定とプライバシー」を選んで、<br>
+                        下の方にある「アカウントの種類とツール」を探そう。
+                        <div id="under">▼</div>
+                        「プロアカウントに切り替える」をタップしよう。<br>
+                        <div id="under">▼</div>
+                        自分のジャンル(ブロガー、クリエイターなど)を<br>
+                        自由に選んで「完了」！
+
+                        <div id="space_M"></div>
+                        <span>
+                            <strong>設定前の数値は見られない</strong>から、早めに切り替えよう！<br>
+                            <strong>設定した後の投稿</strong>から、チェックできるようになるよ。
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </details>
+
+        <details class="sns-details TikTok-acc"><!--TikTokのインプ確認方法-->
+            <summary class="sns-summary"><h>TikTok</h>の確認手順を見る</summary>
+            <div class="sns-content">
+                <ul class="step-list">
+                    <li class="step-item"><span class="step-num">1</span><span>確認したい、自分の投稿を表示。</span></li>
+                    <li class="step-item"><span class="step-num">2</span><span>画面右にある「⋯」をタップして「インサイト」ボタンをタップ！</span></li>
+                    <li class="step-item"><span class="step-num">3</span><span>そこに表示されている<strong>「動画視聴数」</strong>がTikTokのインプレッション数になるよ。</span></li>
+                </ul>
+            </div>
+        </details>
+
+    </div>
+
+    <div id="space" style="height:60px"></div>
+
+    <!--スライダー-->
+    <div class="group_intro">
+        <div class="head">
+            <div class="border"></div>
+            <p>チェックポイント</p>
+            <div class="border"></div>
+        </div>
+        <div class="text">
+          他にもユーザーの反応をチェックできる数値があるよ。<br>
+          それぞれ、どんな意味があるのかな？
+        </div>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slider-wrapper" id="slider">
+                <div class="slide"><!--🍙インプレッション🍙-->
+                    <div class="title">
+                        <div class="pin_left"></div>
+                        <div class="head_1">インプレッション数</div>
+                        <div class="pin_right"></div>
+                    </div>
+                    
+                    <div class="item_group">
+                        <div class="text">
+                            インプレッションとは、「表示回数」のこと。<br>
+                            投稿がどれだけの人に届いたか、<br>
+                            認知の広がりを表しているよ。<br>  
+                        </div>
+
+                        <div class="group">
+                            <div class="head_2">少ない時はチェック！</div>
+                            <div class="list">
+                                <div class="item">
+                                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                    <div class="right">
+                                        <p class="bold">投稿時間を見直そう</p><br>
+                                        ユーザーが多い20〜22時を狙って投稿してみよう。
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="space"style="height:8px"></div>
+                            <div class="list">
+                                <div class="item">
+                                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                    <div class="right">
+                                        <p class="bold">ハッシュタグを厳選</p><br>
+                                        <div id="small">投稿内容に合わせたり、人気すぎないタグも混ぜよう。</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="space"style="height:8px"></div>
+                            <div class="list">
+                                <div class="item">
+                                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                    <div class="right">
+                                        <p class="bold">「最初の2秒」にこだわろう</p><br>
+                                        「引き」のあるワードや画像を選べてるかな？
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide"><!--🍙プロフ表示🍙-->
+                    <div class="title">
+                        <div class="pin_left"></div>
+                        <div class="head_1">プロフ表示</div>
+                        <div class="pin_right"></div>
+                    </div>
+                    
+                    <div class="text">
+                        どれだけ「興味を持ってくれたか」を表しているよ。<br>
+                        投稿から「この人の他の発信も見たい！」<br>
+                        と思ってくれた証拠。ファン化への第一歩！<br>
+                    </div>
+
+                    <div class="group">
+                        <div class="head_2">少ない時はチェック！</div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">アイコンと名前をチェック！</p><br>
+                                    あなたの魅力が最大限に伝わる？
+                                </div>
+                            </div>
+                        </div>
+                        <div id="space"style="height:8px"></div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">しっかり自己紹介できてる？</p><br>
+                                    夢や目的が一目でわかる言葉で、アピールしてみよう。
+                                </div>
+                            </div>
+                        </div>
+                        <div id="space"style="height:8px"></div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">固定投稿を活用しよう</p><br>
+                                    <div id="small">お気に入りの投稿をピン留めして、期待感を高めよう！</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide"><!--🍙リンククリック🍙-->
+                    <div class="title">
+                        <div class="pin_left"></div>
+                        <div class="head_1">リンククリック数</div>
+                        <div class="pin_right"></div>
+                    </div>
+                    
+                    <div class="text">
+                        あなたに興味を持った人が、<br>
+                        「もっと知りたい！」「応援したい！」
+                        と思ってくれたかな？<br>
+                        次のステップへ繋がったかを確認できるよ。
+                    </div>
+
+                    <div class="group">
+                        <div class="head_2">少ない時はチェック！</div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">導線を作ろう</p><br>
+                                    「続きは〇〇から」など、具体的に呼びかけてる？
+                                </div>
+                            </div>
+                        </div>
+                        <div id="space"style="height:8px"></div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">メリットを伝えよう</p><br>
+                                    <div id="small">「〇〇が見れるよ！」とクリック先の楽しみを伝えよう。</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="space"style="height:8px"></div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">リンク集ページの見直し</p><br>
+                                    一番押して欲しいURLが上にある？
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide"><!--🍙保存・リポスト🍙-->
+                    <div class="title">
+                        <div class="pin_left"></div>
+                        <div class="head_1">保存数・リポスト数</div>
+                        <div class="pin_right"></div>
+                    </div>
+                    
+                    <div class="text">
+                        保存は「見返したい」、リポストは「広めたい」の証拠。<br>
+                        投稿がどれだけ心に響いたか、<br>
+                        質の高さを測るバロメーターだよ。
+                    </div>
+
+                    <div class="group">
+                        <div class="head_2">少ない時はチェック！</div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">保存したくなる「情報」はある？</p><br>
+                                    役立つ知識や、真似したくなる要素を入れよう。
+                                </div>
+                            </div>
+                        </div>
+                        <div id="space"style="height:8px"></div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">本音を書いてみよう</p><br>
+                                    努力の過程を投稿して、応援を促そう！
+                                </div>
+                            </div>
+                        </div>
+                        <div id="space"style="height:8px"></div>
+                        <div class="list">
+                            <div class="item">
+                                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                <div class="right">
+                                    <p class="bold">最後まで読み切れる工夫をしよう</p><br>
+                                    文字が多すぎたり、画像は見にくくないかな？
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide"><!--🍙視聴維持率🍙-->
+                    <div class="title">
+                        <div class="pin_left"></div>
+                        <div class="head_1">視聴維持率グラフ<div id="small">(TikTok)</div></div>
+                        <div class="pin_right"></div>
+                    </div>
+                    
+                    <div class="slide_center">
+                        <div class="text">
+                            動画のどの部分で飽きられちゃったかな？<br>
+                            逆にどこが一番注目してもらえたかな？<br>
+                            投稿の「最後まで見てもらう力」を分析できるよ。
+                        </div>
+
+                        <div class="group">
+                            <div class="head_2">少ない時はチェック！</div>
+                            <div class="list">
+                                <div class="item">
+                                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                    <div class="right">
+                                        <p class="bold">冒頭のインパクトはあるかな？</p><br>
+                                        最初の2秒で「結末」を予感させてみよう。
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="space"style="height:8px"></div>
+                            <div class="list">
+                                <div class="item">
+                                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                    <div class="right">
+                                        <p class="bold">テンポを速くしてみる</p><br>
+                                        <div id="small">無駄な間を削り、カット割りを細かくしてテンポUP！</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="space"style="height:8px"></div>
+                            <div class="list">
+                                <div class="item">
+                                    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/checkbox.png?raw=true" class="left">
+                                    <div class="right">
+                                        <p class="bold">離脱ポイントを特定しよう</p><br>
+                                        グラフが落ちた原因を分析して、構成を改善しよう。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="arrow prev" onclick="moveSlide(-1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="dots" id="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            </div>
+            <button class="arrow next" onclick="moveSlide(1)">
+            <svg width="25" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+    </div>
+
+   <div id="space" style="height:60px"></div>
+
+    <!--記録タイミング-->
+    <div class="group_intro">
+        <div class="head">
+            <div class="border"></div>
+            <p>記録タイミング</p>
+            <div class="border"></div>
+        </div>
+        <div class="text">
+            投稿したら、決まった時間に反応をチェックしよう！<br>
+            チェックする時間によって、わかるデータがガラッと変わるよ
+        </div>
+    </div>
+    <div id="timing">
+
+        <div class="timing_group">
+            <div class="item">
+                <div class="left">1時間後</div>
+                <div class="right">
+                    投稿直後の反響をみよう。<br>ファンは即座に反応してくれてる？
+                </div>
+            </div>
+
+            <div id="space" style="height:8px"></div>
+
+            <div class="item" id="pick">
+                <div class="left"><div class="pick_ruby">オススメ！</div>1日後</div>
+                <div class="right">
+                    興味を持ってくれたユーザーはいる？<br>アルゴリズムは味方につけられてる？
+                </div>
+            </div>
+
+            <div id="space" style="height:8px"></div>
+
+            <div class="item">
+                <div class="left">1週間後</div>
+                <div class="right">
+                    検索や「Your Algorithm」を通じて、<br>長時間注目されている投稿かな？
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="space" style="height:60px"></div>
+</div>
+
+
+<script>
+    let currentAccount = 'X';
+    let currentGraphTab = 'impRate';
+    let myChart;
+
+    // 称号データ (各20段階)
+    const RANKS = {
+        'X': ["たまご","孵化したて","つぶやき市民","独り言マスター","リプ返の鬼","トレンド追い人","タイムラインの住人","スレッド職人","拡散の種火","小バズの天才","情報のハブ","コミュニティリーダー","青バッジの誇り","インフルエンサー候補","バズ・メーカー","言論の魔術師","アルゴリズムの友","時代の寵児","SNS大統領","Xの神"],
+        'Instagram': ["見る専","カメラ初心者","フィルター愛好家","映えの探求者","統一感の見習い","ストーリーズ職人","リール愛好家","世界観の構築者","タグマスター","グリッドの芸術家","発見タブの常連","ライフスタイル提案者","PRのプロ","世界観の魔術師","ビジュアルリーダー","憧れの的","トレンドセッター","アイコン的存在","インスタ・クイーン","インスタ・キング"],
+        'TikTok': ["閲覧専門","初投稿","音源使い","エフェクト見習い","トレンド追い人","編集のコツ習得","おすすめの住人","バズの予感","ショート動画職人","リズムの支配者","企画の天才","再生回数のバケモノ","バズの量産機","エンタメの革命児","トレンドメーカー","カリスマTikToker","動画の神童","スマホ画面の支配者","TikTokマスター","レジェンド・オブ・V"]
+    };
+
+    function getExpForLevel(lv) {
+        if (lv <= 1) return 0;
+        return Math.floor(10 * Math.pow(lv, 2.2));
+    }
+
+    function calculateLevelData(totalExp) {
+        let lv = 1;
+        while (totalExp >= getExpForLevel(lv + 1) && lv < 100) {
+            lv++;
+        }
+        const currentLvExp = getExpForLevel(lv);
+        const nextLvExp = getExpForLevel(lv + 1);
+        const progress = (lv === 100) ? 100 : ((totalExp - currentLvExp) / (nextLvExp - currentLvExp)) * 100;
+        const rankIdx = Math.min(Math.floor((lv - 1) / 5), 19);
+        return { lv, progress, nextExp: nextLvExp - totalExp, rank: RANKS[currentAccount][rankIdx] };
+    }
+
+    function updateLevelUI() {
+        const data = getLocalData();
+        const totalExp = data.length * 50;
+        const info = calculateLevelData(totalExp);
+
+        document.getElementById('rank-name').innerText = `${info.rank}`;
+        document.getElementById('lv-num').innerText = info.lv;
+        document.getElementById('exp-bar').style.width = info.progress + "%";
+        document.getElementById('next-exp').innerText = (info.lv === 100) ? "MAX" : Math.ceil(info.nextExp);
+        
+        const meterSection = document.getElementById('meter-ui');
+        meterSection.className = 'level-section tab-' + currentAccount.toLowerCase().replace('instagram','insta');
+    }
+
+    function changeAccount(name) {
+        currentAccount = name;
+        document.querySelectorAll('.sticky-tab').forEach(t => {
+            t.classList.toggle('active', t.innerText === name);
+        });
+        document.getElementById('display-account-name').innerText = `${name} の記録`;
+        document.getElementById('detail-box').style.display = 'none';
+        updateLevelUI();
+        updateChart();
+    }
+
+    function getLocalData() {
+        return JSON.parse(localStorage.getItem('snsData_' + currentAccount)) || [];
+    }
+
+    // --- グラフをフルサイズ画像で保存する関数 ---
+    async function exportChartImage() {
+        const chartCanvas = document.getElementById('analyticsChart');
+        
+        if (!chartCanvas) return;
+
+        // html2canvasを使わず、Canvas自体の機能で画像化すると一番綺麗です
+        // 背景を白にするために一時的なCanvasを作成
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        
+        tempCanvas.width = chartCanvas.width;
+        tempCanvas.height = chartCanvas.height;
+        
+        // 背景を白で塗りつぶす
+        tempCtx.fillStyle = "#ffffff";
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+        
+        // 現在のグラフを描写
+        tempCtx.drawImage(chartCanvas, 0, 0);
+
+        // ダウンロード処理
+        const link = document.createElement('a');
+        link.download = `SNS_Analytics_${currentAccount}.png`;
+        link.href = tempCanvas.toDataURL('image/png');
+        link.click();
+    }
+
+// --- データの追加関数（残り件数表示つき） ---
+    function updateChart() {
+        const ctx = document.getElementById('analyticsChart').getContext('2d');
+        const chartCanvas = document.getElementById('analyticsChart');
+        const container = document.querySelector('.chart-container');
+        const data = getLocalData();
+        
+        // --- 調整ポイント：1データあたりの幅を「35px」に凝縮 ---
+        const minWidthPerData = 35; 
+        const totalDataWidth = data.length * minWidthPerData;
+        const containerWidth = container.clientWidth;
+        
+        // データが少ない時でも、ある程度の幅（containerWidth）を持たせて
+        // グラフが潰れすぎないようにしつつ、増えたら密度高く並べる
+        const finalWidth = Math.max(containerWidth, totalDataWidth);
+        
+        chartCanvas.width = finalWidth;
+        chartCanvas.height = 250;
+        chartCanvas.style.width = finalWidth + 'px';
+        chartCanvas.style.height = '250px';
+
+        const labels = data.map(d => {
+            const dateObj = new Date(d.date);
+            return isNaN(dateObj) ? d.date : `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+        });
+
+        const dataValues = currentGraphTab === 'impRate' ? data.map(d => d.impRate) : data.map(d => d.profViews);
+        const labelName = currentGraphTab === 'impRate' ? 'インプ率 (%)' : 'プロフ表示数';
+        const themeColor = currentAccount === 'X' ? '#FDCB6E' : (currentAccount === 'Instagram' ? '#2A6C8C' : '#32C17D');
+
+        if (myChart) myChart.destroy();
+        myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: labelName,
+                    data: dataValues,
+                    borderColor: '#323232',
+                    backgroundColor: themeColor + '44',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 4, // 密度に合わせて少し小さく
+                    pointBackgroundColor: themeColor
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            font: { size: 9 }, // 文字も少し小さくして重なり防止
+                            autoSkip: false,
+                            maxRotation: 0
+                        },
+                        grid: { display: false }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { font: { size: 10 } }
+                    }
+                },
+                onClick: (e, elements) => { if (elements.length > 0) showDetail(elements[0].index); }
+            }
+        });
+
+        // 最新データへスクロール
+        setTimeout(() => {
+            container.scrollLeft = container.scrollWidth;
+        }, 100);
+    }
+
+    function switchGraphTab(t) { currentGraphTab = t; updateChart(); }
+
+    function showDetail(index) {
+        const data = getLocalData()[index];
+        const detailBox = document.getElementById('detail-box');
+        document.getElementById('detail-text').innerHTML = `
+            <div style="font-family:'donguri'; font-size:25px;">${data.date}</div>
+            <div id="space_S"></div>
+            <p style="margin:5px 0;font-size:13px; color:#323232;"><b>${currentGraphTab === 'impRate' ? 'インプ率' : 'プロフ表示'}: </b>${currentGraphTab === 'impRate' ? data.impRate + '%' : data.profViews}</p><br>
+            <p style="margin:5px 0; font-size:13px; color:#323232;"><b>内容:</b> ${data.content || '未入力'}</p>
+        `;
+        detailBox.style.display = 'block';
+        document.getElementById('delete-action').onclick = () => {
+            if(confirm('削除しますか？(経験値も減ります)')) {
+                let all = getLocalData(); all.splice(index, 1);
+                localStorage.setItem('snsData_' + currentAccount, JSON.stringify(all));
+                updateLevelUI(); updateChart(); detailBox.style.display = 'none';
+            }
+        };
+    }
+
+    async function saveAsImage() {
+        const element = document.getElementById('capture-area');
+        const canvas = await html2canvas(element);
+        const link = document.createElement('a');
+        link.download = `sns-chart-${currentAccount}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+
+    //スライダー
+    const slider = document.getElementById('slider');
+    const dots = document.querySelectorAll('.dot');
+    const tab = document.getElementById('slider-tab'); // タブ要素を取得
+
+    // コンテンツごとの文字を設定
+    const tabTexts = [
+    "インプレッション数",
+    "プロフィール表示数",
+    "リンククリック数",
+    "保存・リポスト数",
+    "視聴維持率グラフ(TikTok)"
+    ];
+
+    function updateDots() {
+    const index = Math.round(slider.scrollLeft / slider.clientWidth);
+    
+    // ドットの更新
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+
+    // タブの文字を更新（追加部分）
+    if (tabTexts[index]) {
+        tab.textContent = tabTexts[index];
+    }
+    }
+
+    // スクロールイベントを監視
+    slider.addEventListener('scroll', updateDots);
+
+    // 矢印ボタンをクリックした時の動作
+    function moveSlide(direction) {
+    const scrollStep = slider.clientWidth; // 1枚分の幅
+    const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+
+    // 現在のスクロール位置から次の位置を計算
+    let newScrollLeft = slider.scrollLeft + (direction * scrollStep);
+
+    // 【ループ機能を追加したい場合】
+    // 一番右で「次へ」を押したら最初へ
+    if (newScrollLeft > maxScrollLeft + 10) {
+        newScrollLeft = 0;
+    } 
+    // 一番左で「前へ」を押したら最後へ
+    else if (newScrollLeft < -10) {
+        newScrollLeft = maxScrollLeft;
+    }
+
+    // スムーズにスクロール
+    slider.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+    });
+    }
+
+    // ドットをクリックしてもそのスライドに飛べるようにする（おまけ）
+    dots.forEach((dot, index) => {
+    dot.style.cursor = 'pointer'; // カーソルを指マークに
+    dot.addEventListener('click', () => {
+        slider.scrollTo({
+        left: index * slider.clientWidth,
+        behavior: 'smooth'
+        });
+    });
+    });
+
+    updateLevelUI();
+    updateChart();
+    localStorage.setItem('4', 'read');
+
+    //ローディング画面
+    window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('loaded');
+    }, 1800);
+    });
+
+    // --- 追加：GASのURL  ---
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxXAmGjZ81nha2-3cLwhsU4ZxgUA90Ufp6Bknvn60JtKBQBTxwXWeH9ljs--VzSuhDDWg/exec";
+
+// ★ 488行目あたりの古い addData は削除し、以下の最新版のみを残してください
+function addData() {
+    const date = document.getElementById('date').value;
+    const followers = parseFloat(document.getElementById('followers').value);
+    const impressions = parseFloat(document.getElementById('impressions').value);
+    const profViews = parseFloat(document.getElementById('profileViews').value) || 0;
+    const contentText = document.getElementById('content').value; 
+
+    if(!date || !followers || !impressions) return alert("数値を入力してください！");
+
+    // --- URLからID（0wmipbykなど）を抽出 ---
+    const path = window.location.pathname;
+    const match = path.match(/\/([a-z0-9]+)/i);
+    const extractedId = (match && match[1]) ? match[1] : "no_id";
+
+    // ローカル保存用（ブラウザ内のグラフ更新用）
+    const impRate = ((impressions / followers) * 100).toFixed(2);
+    const newEntry = { id: Date.now(), date, impRate, profViews, content: contentText };
+    let data = getLocalData();
+    data.push(newEntry);
+    data.sort((a, b) => new Date(a.date) - new Date(b.date));
+    if (data.length > 90) { data = data.slice(-90); }
+    localStorage.setItem('snsData_' + currentAccount, JSON.stringify(data));
+
+    // --- GAS送信用のデータ作成 (E列〜P列の振り分け) ---
+    const sendData = {
+        liverId: extractedId, // A列用
+        x_followers: currentAccount === 'X' ? followers : "",
+        x_impressions: currentAccount === 'X' ? impressions : "",
+        x_profileViews: currentAccount === 'X' ? profViews : "",
+        x_content: currentAccount === 'X' ? contentText : "",
+        insta_followers: currentAccount === 'Instagram' ? followers : "",
+        insta_impressions: currentAccount === 'Instagram' ? impressions : "",
+        insta_profileViews: currentAccount === 'Instagram' ? profViews : "",
+        insta_content: currentAccount === 'Instagram' ? contentText : "",
+        tiktok_followers: currentAccount === 'TikTok' ? followers : "",
+        tiktok_impressions: currentAccount === 'TikTok' ? impressions : "",
+        tiktok_profileViews: currentAccount === 'TikTok' ? profViews : "",
+        tiktok_content: currentAccount === 'TikTok' ? contentText : ""
+    };
+
+    // GASへ送信
+    fetch(GAS_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(sendData)
+    });
+
+    // UI更新
+    updateLevelUI();
+    updateChart();
+    
+    const remaining = 90 - data.length;
+    alert(`${currentAccount} の経験値を獲得し、記録を保存しました！\n（あと ${Math.max(0, remaining)} 件 記録できます）`);
+}
+</script>
+
+<!--==========⬆︎【ページ要素】⬆︎==========-->
+</div>
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/logo_black.png?raw=true" id="logo_mixch">
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%82%B1%E3%82%99%E3%83%BC%E3%83%A0%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A06.png?raw=true" id="game_frame">
+
+</body>
+</html>

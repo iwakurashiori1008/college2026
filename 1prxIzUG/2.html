@@ -1,0 +1,248 @@
+<!--MAP-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS攻略ステータス</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+    <div id="hamburger">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span></span>
+        </label>
+        <nav class="menu-content">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="index.html"><p class="btn_level" id="top">TOP</p>　ぼうけんのはじまり</a></li>
+                <li class="menu-item"><a href="1.html"><p class="btn_level">STAGE.1</p>　そうびをととのえる</a></li>
+                <li class="menu-item"><a href="2.html"><p class="btn_level">STAGE.2</p>　タカラのちず</a></li>
+                <li class="menu-item"><a href="3.html"><p class="btn_level">STAGE.3</p>　<p class="denki">仲間</p>をふやそう</a></li>
+                <li class="menu-item"><a href="4.html"><p class="btn_level">STAGE.4</p>　<p class="denki">旅</p>のきろく</a></li>
+                <li class="menu-item"><a href="5.html"><p class="btn_level">STAGE.5</p>　Q and A</a></li>
+            </ul>
+        </nav>
+    </div>
+
+<div id="monitor">
+<div id="loading-screen">
+    <div class="loading-text">
+        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+    </div>
+</div>
+
+    <div id="page_content">
+        <div class="title">タカラのちず</div><!--あれば-->
+        <div class="text_SS">
+            SNSという広大な世界には、まだあなたの存在を知らないファンたちが眠っているよ。<br>
+            でも、やみくもに進むだけでは迷子になってしまうかも。
+            アルゴリズムの正体やファンに届きやすいルートを知れば、遠回りせずに目的地へ近づけるはず。
+        </div>
+    </div>
+<!--==========⬇︎【ページ要素】⬇︎==========-->
+
+<div class="map-wrapper">
+    
+    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/map_image.png?raw=true" alt="Map Base" class="map-image">
+    <div class="pin-point" style="top: 25%; left: 20%;" onclick="openModal('art1')"></div>
+    <div class="pin-point" style="top: 42%; left: 70%;" onclick="openModal('art2')"></div>
+    <div class="pin-point" style="top: 30%; left: 65%;" onclick="openModal('art3')"></div>
+    <div class="pin-point" style="top: 38%; left: 35%;" onclick="openModal('art4')"></div>
+    <div class="pin-point" style="top: 42%; left: 27%;" onclick="openModal('art5')"></div>
+    <div class="pin-point" style="top: 63%; left: 30%;" onclick="openModal('art6')"></div>
+    <div class="pin-point" style="top: 64%; left: 84%;" onclick="openModal('art7')"></div>
+    <div class="pin-point" style="top: 72%; left: 23%;" onclick="openModal('art8')"></div>
+    <div class="pin-point" style="top: 55%; left: 50%;" onclick="openModal('art9')"></div>
+    <div class="pin-point" style="top: 75%; left: 45%;" onclick="openModal('art10')"></div>
+</div>
+
+<div id="article-data">
+    <div id="art1" style="display:none;">
+        <span class="article-tag">POINT 01</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/1.%5B%E7%B6%99%E7%B6%9A%E3%81%AF%E5%8A%9B%E3%81%AA%E3%82%8A%5D.png?raw=true">
+        <div class="article-text">
+            SNSもライブ配信も、一発逆転のバズを狙うより、<p class="bold">「毎日そこにいること」</p>が<br>一番の攻略法！<br>
+            <br>
+            <p class="bold">「あ、この子今日も頑張ってるな」</p>っていう安心感がファンを作るよ。<br>
+            <br>
+            <p class="bold">最初は反応が薄くても大丈夫。</p><br>AIに「このアカウントは生きてる」って覚えさせるまで、
+            まずはコツコツ投稿をルーティンにしよう。
+        </div>
+    </div>
+
+    <div id="art2" style="display:none;">
+        <span class="article-tag">POINT 02</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/2.%5B%E8%87%AA%E5%88%86%E3%81%AE%E5%BC%B7%E3%81%BF%E3%82%92%E7%9F%A5%E3%82%8B%5D.png?raw=true">
+        <div class="article-text">
+            自分自身を一人の「キャラ」に見立てて、プロデュースしてみて。<br>
+            <br>
+            なんでもこなす万能タイプより、<br><p class="bold">「これだけは誰にも負けない！」</p>って胸を張れる武器をひとつ見つけて、個性を尖らせていくのがコツ！<br>
+            <br>
+            周りのライバルも楽しく研究しながら、あなただけの「レア特性」を一緒に掘り起こしていこう！
+        </div>
+    </div>
+
+    <div id="art3" style="display:none;">
+        <span class="article-tag">POINT 03</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/3.%5B%E3%83%95%E3%82%A1%E3%83%B3%E3%81%A8%E3%81%AE%E4%BA%A4%E6%B5%81%5D.png?raw=true">
+        <div class="article-text">
+            SNSは一方的な発信をする放送室じゃなくて<p class="bold">「おしゃべりする場所」。</p><br>
+            リプを返したり、ストーリーのアンケートで遊んだりして、みんなとの距離をギュッと縮めよう！<br>
+            <br>
+            ユーザーと仲良くなればなるほど、<p class="bold">「この投稿はみんなに愛されてるな」</p><br>ってアプリが判定して、もっと広めてくれるようになるよ。
+        </div>
+    </div>
+
+    <div id="art4" style="display:none;">
+        <span class="article-tag">POINT 04</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/4.%5B%E3%83%95%E3%82%9A%E3%83%AD%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8A%E3%81%93%E3%82%80%5D.png?raw=true">
+        <div class="article-text">
+            投稿から気になってくれた人が、プロフを見て<p class="bold">フォローするかどうかを決める</p>よ。<br>
+            <br>
+            アイコンは盛れてる？ヘッダーで自分の雰囲気が伝わるかな？<br>
+            <br>
+            URLを貼るだけじゃなくて、<br>
+            <p class="bold">今すぐあなたを知りたくなるような言葉</p>を添えるのが、ファンを増やす超大事なコツ！<br>
+            <br>
+            人気者のマネを急ぐより、<br>
+            まずは「投稿を見て興味を持ってくれた人」をしっかりフォローに繋げられるように、
+            <p class="bold">自分らしい言葉</p>でプロフを埋めよう。<br>
+            あなたの魅力がちゃんと伝われば、ファンは必ず増えていくよ！
+        </div>
+    </div>
+
+    <div id="art5" style="display:none;">
+        <span class="article-tag">POINT 05</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/5.%5B%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%95%E3%82%9A%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%5D.png?raw=true">
+        <div class="article-text">
+            「どんな自分になりたいか」の看板を掲げよう。<br>
+            <br>
+            例えば、<br>「ランチタイムを『ぼっち飯』にさせない女子大生」や「毎朝7時に起こしてくれる男子高生」みたいに、<br>まずは<p class="bold">キャラをはっきりさせてみる</p>のがおすすめ。<br>
+            <br>
+            リスナーさんに<p class="bold">「この子をフォローしてると、こんな良いことがある！」</p>って一目でわかる掴みを考えよう！
+        </div>
+    </div>
+
+    <div id="art6" style="display:none;">
+        <span class="article-tag">POINT 06</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/6.%5B%E6%8A%95%E7%A8%BF%E3%81%AE%E3%82%B3%E3%83%84%E3%82%92%E6%8E%B4%E3%82%80%5D.png?raw=true">
+        <div class="article-text">
+            勝負は<p class="bold">「最初の2秒」</p>！<br>
+            AIがユーザーの投稿に注目している時間を計測していること、知ってた？<br>
+            スクロールする指を止めるインパクトが命。<br>
+            <br>
+            あえて全部を語らずに、<p class="bold">「え、続きどうなるの？」</p>って思わせる言い回しや、
+            ちょっとした<p class="bold">心理テクニック</p>を使うだけで、みんなの反応がガラッと変わるよ。<br>
+        </div>
+    </div>
+
+    <div id="art7" style="display:none;">
+        <span class="article-tag">POINT 07</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/7.%5B%E3%82%A2%E3%83%AB%E3%82%B3%E3%82%99%E3%83%AA%E3%82%B9%E3%82%99%E3%83%A0%E3%82%92%E7%9F%A5%E3%82%8B%5D.png?raw=true">
+        <div class="article-text">
+            今のSNSは「いいね」だけじゃなくて、<br>
+            <p class="bold">「どれだけ長く見られたか」</p>や<p class="bold">「保存されたか」</p>が<br>評価のポイントだよ。<br>
+            <br>
+            外部URLをペタペタ貼ってしまうと拡散されにくくなるっていう<p class="bold">「NGルール」</p>もあるから、<br>
+            賢く立ち回ってAIを味方につけるのが、攻略への近道！
+        </div>
+    </div>
+
+    <div id="art8" style="display:none;">
+        <span class="article-tag">POINT 08</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/8.%5B%E3%83%AA%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E8%B5%B7%E3%81%93%E3%81%99%5D.png?raw=true">
+        <div class="article-text">
+            投稿の最後は「次のお願い」で締めよう！<br>
+            「続きはプロフを見てね」
+            「感想をコメントで教えて」<br>
+            みたいに、<p class="bold">ハッキリお願い</p>するのがポイント！<br>
+            <br>
+            人間には<p class="bold">「具体的にお願いされると、その通りに動きたくなる」</p>っていう心理があるから、一言添えるだけでファンになってくれる確率はグッと上がるよ。<br>
+            <br>
+            「次はこのボタンを押せばいいんだ！」って迷わせないように誘導してみよう！
+        </div>
+    </div>
+
+    <div id="art9" style="display:none;">
+        <span class="article-tag">POINT 09</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/9.%5B%E6%B5%81%E8%A1%8C%E3%81%AB%E3%81%AE%E3%82%8B%5D.png?raw=true">
+        <div class="article-text">
+            トレンドのタグ選びは、知れば知るほど奥が深くて迷いやすいポイント。<br>
+            つい「人気のタグを全部盛り」にしたくなるけど、実はそこに大きな落とし穴が...。<br>
+            <br>
+            なぜなら、アプリが「この投稿は結局だれ向けなの？」って混乱して、<p class="bold">逆に誰の画面にも表示されにくく</p>なっちゃうから。<br>
+            <br>
+            「今の自分にぴったりのタグ」を<p class="bold">3つくらい</p>に厳選して、流行の波を上手に乗りこなしていこう！
+        </div>
+    </div>
+
+    <div id="art10" style="display:none;">
+        <span class="article-tag">POINT 10</span>
+        <img class="article-title" src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88/10.%5B%E5%88%86%E6%9E%90%E3%82%92%E3%81%99%E3%82%8B%5D.png?raw=true">
+        <div class="article-text">
+            投稿したあとに、「伸びた！」「伸びなかった...」だけで終わらせてしまうのは、すごくもったいない！<br>
+            <br>
+            <p class="bold">「なんで今回はプロフィールまで見てもらえたのかな？」</p>っていう数字の理由を考えることこそが、夢を叶えるための大切な一歩。<br>
+            <br>
+            ちょっとだけ投稿を振り返る習慣をつけてみよう！<br>
+            半年後のあなたは今よりずっと有名になれているはず！<br>
+        </div>
+    </div>
+</div>
+
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modal-inner-content" class="article-body">
+            </div>
+    </div>
+</div>
+
+
+
+    
+
+<!--==========⬆︎【ページ要素】⬆︎==========-->
+</div>
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/logo_black.png?raw=true" id="logo_mixch">
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%82%B1%E3%82%99%E3%83%BC%E3%83%A0%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A06.png?raw=true" id="game_frame">
+
+
+<script>
+    const modal = document.getElementById('infoModal');
+    const modalInner = document.getElementById('modal-inner-content');
+
+    function openModal(id) {
+        const content = document.getElementById(id).innerHTML;
+        modalInner.innerHTML = content;
+        modal.style.display = 'block';
+        
+        // 【修正ポイント】overflowを使わず、背景を固定する
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${window.scrollY}px`;
+        document.body.style.width = '100%';
+    }
+
+    function closeModal() {
+        // 【修正ポイント】固定を解除し、元のスクロール位置に戻す
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        
+        modal.style.display = 'none';
+    }
+    localStorage.setItem('2', 'read');
+
+    //ローディング画面
+    window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('loaded');
+    }, 1800);
+    });
+</script>
+</body>
+</html>

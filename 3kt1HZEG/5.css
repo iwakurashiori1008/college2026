@@ -1,0 +1,135 @@
+
+#monitor{background-color:#FDCB6E;}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 検索欄のスタイル */
+.search-container {
+    margin-bottom: 40px;
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+}
+
+#qa-search {
+    display:block;
+    width: 90%;
+    margin:0 auto;
+    padding: 15px 20px;
+    font-size: 16px;
+    border:3px solid #323232;
+    border-radius:50px 50px 0 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+#qa-search:focus {
+    border-color: var(--primary-color);
+}
+
+
+#qa_content{
+    background-color:#FFFDF6;
+    backdrop-filter: blur(10px);
+    border-radius:30px;
+    padding:50px 0;
+}
+/* アコーディオンのスタイル */
+.qa-item {
+    width:95%;
+    margin:0 auto;
+    background: #fff;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s;
+    border:2px solid #323232;
+    box-shadow:0 2px #323232;
+}
+
+.qa-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 質問部分 */
+.hatena{
+    color:white;
+    font-family: 'denki';
+    font-size:30px;
+    margin-right:8px;
+}
+.qa-question {
+    font-family:'kiwami';
+    letter-spacing: 1px;
+    color:#323232;
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    background-color:#FFD600;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    border:none;
+}
+.qa-question::after {
+    content: '▼';
+    font-size: 20px;
+    color: #323232;
+    font-family: 'donguri';
+    margin-left:auto;
+    transition: transform 0.3s;
+}
+.nowrap{white-space: nowrap;}
+
+/* 開いている時の記号 */
+.qa-item.active .qa-question::after {
+    transform: rotate(180deg);
+}
+
+/* 回答部分 */
+.qa-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #fff;
+}
+
+.answer-content {
+    padding:20px 15px;
+    border-top: 1px solid #eee;
+    color: #555;
+    font-size: 13px;
+}
+
+.qa-item.active .qa-answer {
+    max-height: 500px; /* 内容に合わせて適宜調整 */
+}
+
+/* 検索結果がない時のメッセージ */
+#no-results {
+    display: none;
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+}
+
+
+/*🦀追加*/
+#design{
+    width:100%;
+    margin:0 auto;
+    margin-bottom:15px;
+}
+

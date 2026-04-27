@@ -1,0 +1,240 @@
+#monitor{background-color:#FFF2B0}
+/*===============
+    プロフ帳
+===============*/
+.container {width: 100%;margin:0 auto;}
+.container_item{
+    width:95%;
+    margin:0 auto;
+}
+
+/*===============
+    タブ選択
+===============*/
+.tab-switch {
+    position: relative;
+    display: flex;
+    height: 50px;
+    background-color: #FFFDF6;
+    border: 3px solid #323232;
+    box-shadow:0 2px #323232;
+    border-radius: 50px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    padding: 4px; /* この4pxが内側の隙間になります */
+    box-sizing: border-box;
+}
+
+/* ラジオボタンを隠す */
+.tab-switch input { display: none; }
+
+/* 文字ラベル部分 */
+.tab-label {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+   font-family: 'donguri';
+    color: #323232;
+    transition: color 0.3s;
+    font-size:25px;
+}
+
+/* スライドする赤い背景（ニュルンと動くやつ） */
+.selection-slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    /* 100%から左右の余白(4px×2)を引いたものを4等分する計算 */
+    width: calc((100% - 8px) / 4); 
+    height: calc(100% - 8px);
+    background-color: #E95D5D;
+    border-radius: 40px;
+    transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1);
+    z-index: 1;
+}
+
+/* タブが選択された時のスライダーの移動距離を修正 */
+#tab0:checked ~ .selection-slider { transform: translateX(0); }
+#tab1:checked ~ .selection-slider { transform: translateX(100%); }
+#tab2:checked ~ .selection-slider { transform: translateX(200%); }
+#tab3:checked ~ .selection-slider { transform: translateX(300%); }
+/* チェックされた時の文字色 */
+#tab0:checked ~ label[for="tab0"],
+#tab1:checked ~ label[for="tab1"],
+#tab2:checked ~ label[for="tab2"],
+#tab3:checked ~ label[for="tab3"] {
+    color: #fff;
+}
+/*===============
+    入力エリア
+===============*/
+.title_group{
+    position: sticky;
+    top:0;
+    background-color:#E98279;
+    padding-top:5px;
+    margin-bottom:20px;
+}
+.title_group .head_1{
+    display: flex;
+    background-color:#E25E5E;
+    padding:8px 0;
+    text-align: center;
+    letter-spacing: 1px;
+    border-radius:10px 10px 0 0;
+    align-items: center;
+    justify-content: space-between;
+}
+[class^="pin"]{
+    width:10px;
+    height:10px;
+    border-radius:50px;
+    background-color: #FDCB6E;
+    border:2px solid #323232;
+}
+.pin_left{margin-left:5%;}
+.pin_right{margin-right:5%;}
+.content-area {
+    width: 100%;
+    border:3px solid #323232;
+    border-radius: 15px;
+    background-color:#FFFDF6;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+}
+.content-area::-webkit-scrollbar{
+    display:none;
+}
+
+.tab-content { display: none;}
+.tab-content.active {
+    display: block;  
+    width:100%;
+    margin:0 auto;
+}
+
+.input-group { 
+    width:95%;
+    margin:0 auto;    
+    margin-bottom: 25px; 
+}
+.input-group label {
+    font-family:'kiwami';
+    display: block; 
+    font-size: 16px; 
+    letter-spacing: .5px;
+    color: #323232; 
+    margin-bottom: 3px; 
+}
+#small{font-size:15px;}
+input {
+    font-size:15px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 3px dashed rgb(180, 180, 180);
+    color:#323232;
+    padding: 4px 0;
+}
+input:focus { border-bottom-color:#FDCB6E;outline: none; }
+
+/*===============
+    インタビュー
+===============*/
+.result-text {
+    white-space: normal !important; 
+}
+.output-card .title{
+    width:80%;
+    margin:0 auto;
+    color:white;
+    padding-bottom:10px;
+    border-bottom:2px dashed white;
+    font-size:30px;
+    font-family:'donguri';
+    text-align: center;
+    strong{color:#E25E5E}
+}
+.output-card .result-intro{
+    width:95%;
+    margin:0 auto;
+    text-align: center;
+    font-size:13px;
+    padding:15px 0;
+}
+.question{
+    width:90%;
+    margin:0 auto;
+    margin-bottom:8px;
+    text-align: center;
+    padding:10px 0;
+    background-color:#FDCB6E;
+    color:#323232;
+    border-radius: 20px 20px 0 20px;
+    border: 2px solid #323232;
+    box-shadow:0 2px white;
+    font-size:15px;
+    font-family: 'kiwami';
+}
+.interview-box{
+    width:93%;
+    margin:0 auto;
+    border-radius: 25px 25px 25px 0px;
+    margin-bottom:30px;
+    background-color:white;
+    color:#323232;
+}
+.interview-item{
+    width:95%;
+    margin:0 auto;
+    padding:15px 0;
+}
+.output-card {
+    padding:0 2.5%;
+    border-radius: 15px;
+    background-color:#323232;
+    outline:2px solid white;
+    outline-offset: -5px;
+    padding:15px 0;
+    position: relative;
+    overflow: hidden; /* 画像がはみ出さないように */
+}
+.result-text { font-size: 14px; color:white; }
+
+#lock_image{
+    width:20%;
+    margin:0 auto;
+    opacity: .5;
+}
+#lock-message{
+    font-family: 'kiwami';
+    line-height: 1.5;
+    letter-spacing:1px ;
+    text-align: center;
+}
+.rest{
+    font-family: 'kiwami';
+    font-size:13px;
+    color:#FDCB6E;
+}
+.rest_no{
+    font-size:20px;
+    font-family: 'donguri';
+    color:#FDCB6E;
+}
+
+
+/*連携*/
+.up{
+    width:100%;
+    margin-bottom:10px;
+    text-align: center;
+    font-family: 'kiwami';
+    font-size:13px;
+    letter-spacing:.5px;
+    color:#E95D5D;
+}

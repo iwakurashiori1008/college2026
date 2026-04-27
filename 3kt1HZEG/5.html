@@ -1,0 +1,421 @@
+<!--MAP-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="5.css">
+</head>
+<body>
+    <div id="hamburger">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span></span>
+        </label>
+        <nav class="menu-content">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="index.html"><p class="btn_level" id="top">TOP</p>　ぼうけんのはじまり</a></li>
+                <li class="menu-item"><a href="1.html"><p class="btn_level">STAGE.1</p>　そうびをととのえる</a></li>
+                <li class="menu-item"><a href="2.html"><p class="btn_level">STAGE.2</p>　タカラのちず</a></li>
+                <li class="menu-item"><a href="3.html"><p class="btn_level">STAGE.3</p>　<p class="denki">仲間</p>をふやそう</a></li>
+                <li class="menu-item"><a href="4.html"><p class="btn_level">STAGE.4</p>　<p class="denki">旅</p>のきろく</a></li>
+                <li class="menu-item"><a href="5.html"><p class="btn_level">STAGE.5</p>　Q and A</a></li>
+            </ul>
+        </nav>
+    </div>
+
+<div id="monitor">
+    <div id="page_content">
+        <div class="title">Q and A</div><!--あれば-->
+        <div class="text_SS">
+            SNSや配信の冒険に、悩みや迷いはつきもの。<br>
+            ここでは、みんなから寄せられるよくある質問やファン作りの秘訣を紹介しているよ。<br>
+            ここで装備を整えるように知識を蓄えて、自信を持って次のステージへ繰り出そう！
+        </div>
+    </div>
+<!--==========⬇︎【ページ要素】⬇︎==========-->
+<div class="container">
+
+    <!-- 検索バー -->
+    <div class="search-container">
+        <input type="text" id="qa-search" placeholder="キーワードを入力して質問を検索..." onkeyup="filterQA()">
+    </div>
+
+
+    <!-- Q&A -->
+    <div id="qa_content">
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    毎日投稿や毎日配信がつらいです。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        「100点満点の投稿」を毎日作ろうとすると必ず燃え尽きます。まずは「継続すること」自体を目標にしましょう。<br>コツは、調子が良い時に「ストック」を作っておくこと。<br>
+                        <br>
+                        「今日はすっぴんだから配信できない」と思わず、ラジオ配信に切り替えたり、過去のベストショットを再投稿したりして「生存確認」を欠かさないことが大切です。ファンの日常にあなたの存在を溶け込ませていこう。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    周りのライバーと比べて焦ってしまいます。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        SNSや配信の世界は「先行逃げ切り」に見えがちですが、実は「最後に残った人が勝つ」世界です。<br>
+                        <br>
+                        他人の数字は、その人がこれまでに積み上げた「過去の結果」。<br>
+                        焦った時は自分の「旅のきろく(分析ツール)」を見返してみよう。「1ヶ月前よりコメントが1件増えた」「新しい常連さんが1人できた」という小さな成長を全力で喜ぶことが、長く頑張り続ける秘訣です。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    アンチコメントが来たらどうすればいい？
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        反論は「相手の思うツボ」です。SNSのアルゴリズムは、喧嘩（ネガティブなやり取り）も「盛り上がっている」と判断して拡散してしまうことがあります。<br>
+                        配信でもSNS上でも対応は同じ。感情的にならず、無言で「ブロック＆非表示」が最強の武器。<br>
+                        あなたの貴重な時間は、アンチのためではなく、あなたを愛してくれる99人のファンのために使いましょう。<br>運営にも相談窓口があることを忘れないでくださいね。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    <span class="nowrap">閲覧数やフォロワーが減ってモチベが下がります。</span>
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        数値に波があるのは当たり前。<br>減った理由を分析するのも大事ですが、今応援してくれているファンを喜んでくれるコメントを想像して、次の一手を考えましょう。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    投稿しても全然伸びません。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        継続が何よりも重要！<br>
+                        多くの場合、20～30投稿くらいで伸び始めます。最初は伸びなくても続けることが大切です。<br>
+                        反応がなくても「誰かに見られている」意識を持って、継続して発信してみよう。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    アイコン写真は自撮りじゃないとダメですか？
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        本人の顔がはっきりわかる方が、初見さんは安心してフォローしてくれるので、圧倒的にファンを増やしやすくなります。<br>
+                        まだ顔を出すことに自信がない場合は、後ろ姿や自分の雰囲気が伝わる写真を設定しましょう。<br>
+                        悩んだら担当マネージャーに相談するのも◎
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>自分のキャラが定まりません。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        最初から「完璧なキャラ」を決める必要はありません。発信しながらファンと一緒に作っていくものです。<br>
+                        自分が「当たり前にできていること」の中にヒントがあります（例：メイクが早い、食べ方が綺麗、アニメに詳しいなど）。<br>
+                        <br>
+                        自分で決めたキャラが苦しくなったら、素直に「最近これにハマってるんだよね」と変化を見せてもOK。ファンはあなたの「完成品」ではなく「成長のプロセス」を見たいと思っています。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>複数のSNSを使い分けるのが大変です。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        メイン(例：TikTok)を一つ決めて、他はその使い回しや告知用と割り切るのも戦略です。<br>
+                        無理なく、自分が楽しんで続けられる方法を探していこう。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>配信の宣伝ばかり投稿しても大丈夫ですか？
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        SNSでの発信は、「日常・企画投稿：7割」に対して、「配信告知：3割」に抑えるのが理想的！<br>
+                        視聴者は「配信の内容」だけでなく、配信者の「人柄」や「考え方」に惹かれてフォローします。<br>
+                        告知だけだと、あなたの人間味が伝わる機会を逃してしまうので、バランスを考えて、上手に投稿内容を分散させよう。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    投稿がのびる人の特徴はありますか？
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        のびる投稿には共通点があります。
+                        最初の3秒が面白い、感情が伝わる、共感できる内容、コメントしたくなる内容など...<br>
+                        きれいな動画よりも「人柄が伝わる動画」のほうがのびやすいです。<br>
+                        まずはいろんなジャンルの投稿をしてみて、ユーザーの反応を見ながら、どれが自分に合っているか探してみよう。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    どうすればファンになってもらえますか？
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        継続した活動など、「一生懸命頑張っている姿」を見せることです。弱音や、努力の過程をたまには見せて、応援したくなる「隙」を作りましょう。<br>
+                        <br>
+                        人は、非の打ち所がない完璧な存在に対しては、憧れを抱くことはあっても「支えたい」という感情は抱きにくいもの。<br>
+                        むしろ、不器用ながらも目標に向かって頑張っている姿を見せて「この人を放っておけない」「自分が応援して支えてあげたい」という気持ちにさせていこう！
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    SNSからミクチャに飛んでくれません。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        SNSで「続きは配信で話すね！」など興味を引くのがコツ。<br>
+                        気になってくれたユーザーが迷子にならないようにリンクは「わかりやすく」「目立つところに記載」して、丁寧に誘導しよう。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    配信頻度はどれくらいがベスト？
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        理想は毎日ですが、まずは週3〜4回でも「決まった時間」に配信して、ファンの生活リズムに組み込んでもらうことが定着の近道です。<br>
+                        最初は1日15分からで大丈夫。継続することで、リスナーさんとの信頼関係が育ちます。<br>
+                        <br>
+                        慣れてきたら少しずつ時間を延ばしてみましょう。ミクチャは配信が長いほど「盛り上がり度」が上がり、おすすめ欄を通じて新しいファンに見つけてもらいやすくなります。<br>
+                        ファンが来てくれるのを待つだけでなく、自分から「見つけてもらうチャンス」を作りに行こう！
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    動画編集アプリは何がおすすめ？
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        スマホなら「CapCut」や「VLLO」が直感的で使いやすいです。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    自撮りが上手く撮れません。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        キラキラした完璧な姿やふとした表情など、いろんな自分をみんなに発信していきましょう。<br>
+                        実は、自撮りの技術を磨く一番の近道は、「とにかく回数を撮ること」！<br>
+                        盛れる角度や、しっくりくる加工は、少しずつ見つかっていきます。
+                        まずはオフショットとして気軽な1枚から始めてみよう。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    テスト期間中で活動ができません。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        無理は禁物！あらかじめ「◯日まで休みます」と宣言し、勉強している様子をたまに投稿するだけでファンは待ってくれます。<br>
+                        まずは担当マネージャーに相談してみよう！
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-list">
+            <div class="qa-item">
+                <button class="qa-question">
+                    <div class="hatena">？</div>
+                    親に活動を反対されています。
+                </button>
+                <div class="qa-answer">
+                    <div class="answer-content">
+                        「いつまでにこれを目指す」という目標と、学業との両立ルールを伝えて安心させてあげましょう。<br>
+                        あなたの本気度が伝われば、きっと応援してくれるはず！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+   
+
+
+<!--
+    <div id="qa-list">
+        <div class="qa-item">
+            <button class="qa-question">周りのライバーと比べて焦ってしまいます。</button>
+            <div class="qa-answer">
+                <div class="answer-content">
+                    テキスト
+                </div>
+            </div>
+        </div>
+    </div>
+      【ここまで】 -->
+
+
+        <!--✅一旦非表示✅
+        <div class="qa-item">
+            <button class="qa-question">パスワードを忘れてしまった場合はどうすればいいですか？</button>
+            <div class="qa-answer">
+                <div class="answer-content">
+                    ログイン画面の「パスワードをお忘れの方」リンクから、登録したメールアドレスを入力して再設定を行ってください。
+                </div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <button class="qa-question">退会方法を教えてください。</button>
+            <div class="qa-answer">
+                <div class="answer-content">
+                    設定画面の一番下にある「退会手続き」よりお手続きいただけます。退会後はデータの復元ができませんのでご注意ください。
+                </div>
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <button class="qa-question">支払い方法には何がありますか？</button>
+            <div class="qa-answer">
+                <div class="answer-content">
+                    クレジットカード（Visa, Mastercard, JCB）および銀行振込、各種コンビニ決済に対応しております。
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+
+    <div id="no-results">一致する質問が見つかりませんでした。</div>
+</div>
+
+<script>
+    // アコーディオンの開閉処理
+    const qaItems = document.querySelectorAll('.qa-item');
+    
+    qaItems.forEach(item => {
+        const question = item.querySelector('.qa-question');
+        question.addEventListener('click', () => {
+            // 他を閉じる場合は以下を有効化
+            // qaItems.forEach(i => { if(i !== item) i.classList.remove('active'); });
+            
+            item.classList.toggle('active');
+        });
+    });
+
+    // 検索フィルタリング処理
+    function filterQA() {
+        const input = document.getElementById('qa-search');
+        const filter = input.value.toLowerCase();
+        const items = document.querySelectorAll('.qa-item');
+        const noResults = document.getElementById('no-results');
+        let visibleCount = 0;
+
+        items.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            if (text.includes(filter)) {
+                item.style.display = "";
+                visibleCount++;
+            } else {
+                item.style.display = "none";
+                item.classList.remove('active'); // 隠れた項目は閉じる
+            }
+        });
+
+        noResults.style.display = visibleCount === 0 ? "block" : "none";
+    }
+    localStorage.setItem('5', 'read');
+</script>
+
+
+
+
+    
+
+<!--==========⬆︎【ページ要素】⬆︎==========-->
+</div>
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/logo_black.png?raw=true" id="logo_mixch">
+<img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%82%B1%E3%82%99%E3%83%BC%E3%83%A0%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A06.png?raw=true" id="game_frame">
+
+</body>
+</html>

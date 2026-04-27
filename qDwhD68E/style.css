@@ -1,0 +1,317 @@
+/*==============================【共通要素】==============================*/
+/*フォント*/
+@font-face {/*donguri*/
+font-family:'donguri';
+src:url('https://iwakurashiori1008.github.io/font/DonguriDuel.ttf');
+}
+@font-face {/*noto*/
+font-family:'noto';
+src:url('https://iwakurashiori1008.github.io/font/NotoSansJP-VariableFont_wght.ttf');
+}
+@font-face {/*kiwami*/
+font-family:'kiwami';
+src:url('https://iwakurashiori1008.github.io/font/GenEiKiwamiGo.ttf');
+}
+@font-face {/*mochi*/
+font-family:'mochi';
+src:url('https://iwakurashiori1008.github.io/font/NuKinakoMochi-Reg.otf');
+}
+@font-face {/*denki*/
+font-family:'denki';
+src:url('https://iwakurashiori1008.github.io/font/DenkiChip.ttf');
+}
+.denki{font-family:'denki';display: inline-block;}
+/*スペース*/
+#space_LL{height:500px;}
+#space_L{height:50px;}
+#space_M{height:30px;}
+#space_S{height:15px;}
+#space_SS{height:10px;}
+
+/*フォントサイズ*/
+[class^="head_"]{font-family: 'kiwami';}
+.head_1{font-size:23px;}
+.head_2{font-size:18px;}
+
+[class^="donguri_"]{font-family: 'donguri';}
+.donguri_h1{font-size:28px;}
+.donguri_h2{font-size:22px;}
+
+.text_L{font-size:15px;}
+.text_M{font-size:14px;}
+.text_S{font-size:13px;}
+.text_SS{font-size:12px;}
+
+
+
+
+
+
+/*色*/
+:root{
+    --black:#323232;
+}
+
+/*初期値*/
+body{
+    background-color:#FFFDF6;
+    margin:0;
+    padding:0;
+    font-family:'noto';
+    color:var(--black);
+}
+p{margin:0;display:inline-block;}
+img{display:block;}
+#game_frame{display:none;}
+a{text-decoration: none;}
+
+/*共通要素*/
+#monitor {
+    position: relative; 
+    overflow: hidden; 
+    padding: 30px 0;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+#logo_mixch{
+    width:25%;
+    max-width:180px;
+    margin:0 auto;
+    padding:15px 0;
+}
+[id^="content_"]{
+    padding:20px 0;
+    border-radius:15px;
+}
+
+/*ページ冒頭　タイトル&導入文*/
+#page_content{
+    padding:10px;
+    width:90%;/*✅狭かったら調整してね*/
+    margin:0 auto;
+    .title{
+        font-family: 'donguri';
+        font-size:25px;
+        width:65%;
+        margin:0 auto;
+        text-align: center;
+        background-color:var(--black);
+        color:white;
+        padding:10px 0;
+        border-radius:50px;
+    }
+    .text_SS{
+        width:90%;
+        margin:0 auto;
+        padding-top:10px;
+        padding-bottom:20px;
+    }
+}
+
+
+/*ハンバーガーメニュー*/
+#hamburger{
+    max-width: 480px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex; 
+    justify-content: flex-end;
+    align-items: center;
+    padding:10px;
+    padding-bottom:10px;
+    margin-bottom:10px;
+    box-sizing: border-box;
+}
+#menu-toggle {display: none;}
+.menu-btn {
+    position:fixed;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #323232;
+    border: 3px solid #fff;
+    border-radius: 4px;
+}
+.menu-btn span,
+.menu-btn span::before,
+.menu-btn span::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 24px;
+    border-radius: 10px;
+    background: #fff;
+    position: absolute;
+    transition: all 0.3s;
+}
+.menu-btn span::before { bottom: 8px; }
+.menu-btn span::after { top: 8px; }
+#menu-toggle:checked ~ .menu-btn span { background: transparent; }
+#menu-toggle:checked ~ .menu-btn span::before { bottom: 0; transform: rotate(45deg); }
+#menu-toggle:checked ~ .menu-btn span::after { top: 0; transform: rotate(-45deg); }
+.menu-content {
+    font-family:'donguri';
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background:var(--black);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#menu-toggle:checked ~ .menu-content {
+    transform: translateX(-100%);
+}
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width:80%;
+    max-width: 450px;
+    padding: 30px 20px;
+}
+.menu-item {
+    margin: 30px 0;
+    position: relative;
+    
+}
+.menu-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size:20px;
+    display: block;
+    padding-left: 45px;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+.btn_level{
+    width:25%;
+    align-content: center;
+    text-align: center;
+    display:inline-block;
+    font-size:16px;
+}
+.btn_level#top{font-size:25px;}
+.menu-item a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: url('https://github.com/iwakurashiori1008/SNS_-/blob/main/%E2%86%92.png?raw=true') no-repeat center/contain;
+    opacity: 0;
+}
+.menu-item a:hover::before,
+.menu-item a:active::before {
+    opacity: 1;
+    animation: cursor-blink 0.6s infinite steps(2);
+}
+@keyframes cursor-blink {
+    0% { left: 0px; }
+    100% { left: 8px; }
+}
+@media screen and (max-width: 500px) {
+    .menu-list {
+        width: 80%;
+    }
+}
+
+
+/*メディアクエリ　モニターサイズ*/
+@media(min-width:1000px){
+    #monitor{
+        overflow: auto;
+        -ms-overflow-style: none;
+        height:75vh;
+        border:4px solid var(--black);
+        margin-bottom:10px;
+    }
+    #monitor::-webkit-scrollbar{
+        display:none;
+    }
+    #game_frame{
+        display:block;
+        max-width:400px;
+        margin:0 auto;
+    }
+    #logo_mixch{
+        display:none;
+    }
+    .menu-btn{
+        position:absolute;
+        top:auto;
+        right:auto
+    }
+    #hamburger{
+        position:relative;
+    }
+}
+
+/* --- ローディング画面のスタイル --- */
+
+/* --- ローディング画面のスタイル --- */
+#loading-screen {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: #FDCB6E; 
+    z-index: 1110000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+
+.loading-text {
+    display: flex;
+    gap: 8px;
+    font-family: 'donguri';
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: bold;
+    color: white; 
+    position: fixed;   /* 親の高さではなく、ブラウザの画面基準にする */
+    top: 50%;          /* 画面の上から50%の位置 */
+    left: 50%;         /* 画面の左から50%の位置 */
+    transform: translate(-50%, -50%); /* 自身のサイズ分を戻してぴったり中央へ */
+}
+
+/* 1文字ずつの設定 */
+.loading-text span {
+    animation: bounce-retro 0.5s infinite steps(2) alternate;
+}
+
+/* アニメーションの遅延 */
+.loading-text span:nth-child(2) { animation-delay: 0.1s; }
+.loading-text span:nth-child(3) { animation-delay: 0.2s; }
+.loading-text span:nth-child(4) { animation-delay: 0.3s; }
+.loading-text span:nth-child(5) { animation-delay: 0.4s; }
+.loading-text span:nth-child(6) { animation-delay: 0.5s; }
+.loading-text span:nth-child(7) { animation-delay: 0.6s; }
+
+/* カクカクした動きの定義 */
+@keyframes bounce-retro {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
+.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+    
+
+
+

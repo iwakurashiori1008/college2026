@@ -1,0 +1,323 @@
+#monitor{
+    background-color:#946655;
+}
+/*===============
+    content_1
+===============*/
+#content_1{
+    position:relative;
+    width:92%;
+    margin:0 auto;
+    border-radius:300px 300px 15px 15px;
+    outline:3px solid #FFF2CD;
+    outline-offset: 5px;
+    padding:20px 0;
+    background-image:url(https://github.com/iwakurashiori1008/SNS_-/blob/main/pixel_studio_20260403_04482745.jpg?raw=true);
+    background-size:cover;
+    background-position:bottom;
+}
+#content_1 #title{
+    position:absolute;
+    width:80%;
+    max-width:400px;
+    top:5px;
+    right:30px;
+    margin:0 auto;
+}
+#content_1 .text{
+    width:90%;
+    margin:0 auto;
+    text-align:center;
+    font-size:13px;
+    font-family: 'noto';
+    font-weight:bold;
+    line-height:1.8;
+    padding:40px 0 20px 0;
+    color:#195E7E;
+}
+#content_1 #space{height:200px}
+
+/*===============
+    content_2
+===============*/
+#content_2{
+    width:95%;
+    margin:0 auto;
+    border-radius:15px;
+    border:3px solid #323232;
+    background-image: linear-gradient(120deg, #fee4cb, #f8efe8 50%, #fee4cb);
+}
+
+#content_2 #quest_title{
+    width:85%;
+    margin:0 auto;
+    padding-top:15px;
+}
+[class^="pin_group"]{
+    display:flex;
+    justify-content: space-between;
+    [class^="pin_"]{
+        width:10px;
+        height:10px;
+        background-color:#FFD600;
+        border-radius:50px;
+        border:3px solid #323232;
+    }
+    .pin_left{margin-left:5%;}/*20pxでも可*/
+    .pin_right{margin-right:5%;}
+}
+
+/*クエスト要素*/
+#content_2 .title_group{
+    text-align: center;
+    .title{
+        width:80%;
+        margin:0 auto;
+        font-family: 'donguri';
+        font-size:40px;
+        letter-spacing: 1px;
+        padding:5px 0 10px 0;
+        border-radius:50px;
+        background-color:#C1A489;
+        box-shadow:inset 0px 5px 0 #946655;
+    }
+    p{
+        font-family: 'kiwami';
+        font-size:13px;
+        padding:15px 0 10px 0;
+        letter-spacing: .5px;
+    }
+}
+
+
+header { text-align: center; margin-bottom: 30px; border: 4px double var(--border-color); padding: 15px; background: rgba(255, 255, 255, 0.05); }
+h1 { font-size: 1.4rem; margin: 0; color: var(--accent-color); letter-spacing: 2px; }
+
+.container{
+    width:90%;
+    margin:0 auto;
+}
+.quest-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 30px; 
+}
+.quest-card { 
+    position:relative;
+    background-color:#E2D2C3;
+    padding: 12px 10px 20px 10px; 
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    transition: all 0.2s ease; 
+    border-radius:15px;
+    border:3px solid #323232;
+}
+
+.quest-number { 
+    position:absolute;
+    top:-15px;
+    color:white;
+    font-family: 'donguri';
+    padding:3px 0 5px 0;
+    font-size:20px;
+    background-color:#323232;
+    width:35%;
+    text-align: center;
+    border-radius:50px;
+    margin-right: 12px; 
+}
+#quest-title{
+    width:70%;
+    margin:0 auto;
+    padding:10px 0 3px 0;
+    border-bottom:3px dashed #9D8670;
+}
+.quest-desc { 
+    font-family:'noto';
+    width:100%;
+    margin:0 auto;
+    display:inline-block;
+    font-size:clamp(13px,.7vw,15px);
+    text-align: center;
+    padding-top:10px;
+    color:#323232;
+}
+
+
+
+.quest-card.completed { 
+    border-color:#32C17D;
+    .quest-number{background-color:#32C17D;}
+    #quest-title{opacity:.5}/*タイトル薄くするやつ*/
+}
+
+.quest-info { flex-grow: 1; }
+
+.status-badge { 
+    position:absolute;
+    right:-30px;
+    bottom:-30px;
+    width: 95px; 
+    font-size: 1.2rem; 
+    filter: grayscale(1); 
+}
+.completed .status-badge { filter: grayscale(0) opacity(1); text-shadow: 0 0 8px var(--accent-color); }
+
+/* ゲージエリア */
+.party-status { 
+    width:95%;
+    margin:0 auto;
+    border-radius: 8px; 
+    padding:12px 0 30px 0;
+}
+.progress-text { 
+    font-size:12px;
+    font-family:'kiwami';
+    letter-spacing: 1px;
+    margin-bottom: 10px; 
+    text-align: center; 
+    color:#323232;
+}
+.bar-container { 
+    width: 50%;
+    margin:0 auto; 
+    height: 12px; 
+    background-color:#D9D9D9;
+    border: 2px solid #555; 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+.bar-fill { width: 0%; height: 100%; background:#32C17D;transition: width 0.8s ease-out; }
+
+footer { margin-top: 40px; text-align: center; font-size: 0.6rem; color: #666; padding-bottom: 20px; }
+.reset-btn { background: none; border: none; color: #444; text-decoration: underline; font-family: inherit; cursor: pointer; }
+
+/*==================================
+🌟 全クリアポップアップの中央配置
+==================================*/
+#mikkuma{
+    width:50%;
+    margin:5px auto;
+}
+#complete-popup {
+    display:block;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    /* 中央配置の設定 */
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ★ポップアップのスタイル */
+#complete-popup {
+    /*display: none; /* 初期は非表示 */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+.popup-content {
+    /* 背景・装飾 */
+    background-image: url(https://github.com/iwakurashiori1008/SNS_-/blob/main/popup_S.png?raw=true);
+    background-size: contain;
+    border-radius: 30px;
+    box-shadow: 0 0 20px var(--accent-color);
+    
+    /* 配置・サイズ */
+    width: 80%; /* 70%より少し広めに設定しました */
+    max-width: 350px;
+    padding: 20px;
+    text-align: center;
+    
+    /* アニメーション */
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popup_list{
+    background-color:#FFFDF6;
+    border-radius:30px;
+    margin-top:20px;
+    padding:20px;
+    border:5px solid #323232;
+}
+.popup{
+    font-family:'kiwami';
+    white-space: nowrap;
+    font-size:clamp(14px,.9vw,100px);
+    line-height:1.5;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+#popup_title{
+    width:70%;
+    margin:0 auto;
+}
+.btn_group{
+    width:90%;
+    max-width:230px;
+    margin:0 auto;
+    align-content:center;
+
+    .popup-btn{
+        font-family:'mochi';
+        display:flex;
+        width:100%;
+        background-color:#323232;
+        padding:12px 0 8px 0;
+        border:none;
+        color:white;
+        border-radius:50px;
+        box-shadow:0 5px black;
+        align-items:center;
+        letter-spacing: 1.5px;
+        font-size:clamp(13px,.8vw,100px);
+    }
+    .popup-btn:hover{transform:translateY(3px);box-shadow:none;}
+    .point{width:15%;}
+    .text{width:100%;text-align: center;}
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/*星飛ばし*/
+.sprinkle-star {
+    position: absolute;
+    width: 30px; /* 星のサイズ */
+    height: 30px;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+    animation: star-explosion 1s ease-out forwards;
+}
+
+@keyframes star-explosion {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1; 
+    }
+    50% {
+        opacity: .7;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(360deg);
+        opacity: 0; 
+    }
+}
+

@@ -1,0 +1,290 @@
+<!--プロフィール-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS攻略ステータス</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="1.css">
+</head>
+<body>
+    <div id="hamburger">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span></span>
+        </label>
+        <nav class="menu-content">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="index.html"><p class="btn_level" id="top">TOP</p>　ぼうけんのはじまり</a></li>
+                <li class="menu-item"><a href="1.html"><p class="btn_level">STAGE.1</p>　そうびをととのえる</a></li>
+                <li class="menu-item"><a href="2.html"><p class="btn_level">STAGE.2</p>　タカラのちず</a></li>
+                <li class="menu-item"><a href="3.html"><p class="btn_level">STAGE.3</p>　<p class="denki">仲間</p>をふやそう</a></li>
+                <li class="menu-item"><a href="4.html"><p class="btn_level">STAGE.4</p>　<p class="denki">旅</p>のきろく</a></li>
+                <li class="menu-item"><a href="5.html"><p class="btn_level">STAGE.5</p>　Q and A</a></li>
+            </ul>
+        </nav>
+    </div>
+
+<div id="monitor">
+    <div id="page_content">
+        <div class="title">そうびをととのえよう</div><!--あれば-->
+        <div class="text_SS">
+            冒険の前に、まずは自分の「最強の武器」を知ることから始めよう！<br>
+            客観的に自分を見つめ直すと、「どうすればもっと魅力が伝わるか」のヒントが見えてくるはず。<br>
+            理想の自分をイメージして、ファンが応援したくなる魅力的なキャラクターをプロデュースしよう。
+        </div>
+    </div>
+    <div class="container">
+        <div class="container_item">
+
+            <!--タブ選択-->
+            <div class="tab-switch">
+                <input type="radio" name="tab-group" id="tab0" checked onchange="switchTab(0)">
+                <input type="radio" name="tab-group" id="tab1" onchange="switchTab(1)">
+                <input type="radio" name="tab-group" id="tab2" onchange="switchTab(2)">
+                <input type="radio" name="tab-group" id="tab3" onchange="switchTab(3)">
+                
+                <label class="tab-label" for="tab0">じぶん</label>
+                <label class="tab-label" for="tab1">クエスト</label>
+                <label class="tab-label" for="tab2">ぶき</label>
+                <label class="tab-label" for="tab3">パーティ</label>
+
+                <div class="selection-slider"></div>
+            </div>
+            
+            <!--入力項目-->
+            <div class="content-area" id="input-fields">
+                <div class="tab-content active"><!--【じぶん】基本情報-->
+                    <div class="title_group">
+                        <div class="head_1"><div class="pin_left"></div>基本プロフィール<div class="pin_right"></div></div>
+                    </div>
+                    <div class="input-group"><label>芸名</label><input type="text" id="q1" placeholder="例：星宮ルナ" oninput="update()"></div>
+                    <div class="input-group"><label>ニックネーム</label><input type="text" id="q2" placeholder="例：ルナちゃん" oninput="update()"></div>
+                    <div class="input-group"><label>誕生日</label><input type="text" id="q3" placeholder="例：10月10日" oninput="update()"></div>
+                    <div class="input-group"><label>MBTI</label><input type="text" id="q4" placeholder="例：ENFP" oninput="update()"></div>
+                    <div class="input-group"><label>主な配信時間</label><input type="text" id="q5" placeholder="例：毎日21時〜23時" oninput="update()"></div>
+                    <div class="input-group"><label>朝型？夜型？</label><input type="text" id="q6" placeholder="例：超夜型" oninput="update()"></div>
+                    <div class="input-group"><label>インドア？アウトドア？</label><input type="text" id="q7" placeholder="例：休日はカフェ巡り" oninput="update()"></div>
+                    <div class="input-group"><label>趣味</label><input type="text" id="q8" placeholder="例：メイク・ヘアアレンジ" oninput="update()"></div>
+                    <div class="input-group"><label>性格を一言で言うと...</label><input type="text" id="q9" placeholder="例：負けず嫌いで寂しがり屋" oninput="update()"></div>
+                    <div class="input-group"><label>周りからよく言われること</label><input type="text" id="q10" placeholder="例：意外としっかりしてるね" oninput="update()"></div>
+                    <div class="input-group"><label>自慢できること</label><input type="text" id="q11" placeholder="例：リスナーさんの名前を忘れない！" oninput="update()"></div>
+                </div>
+
+
+                <div class="tab-content"><!--【クエスト】将来の夢/目標-->
+                    <div class="title_group">
+                        <div class="head_1"><div class="pin_left"></div>将来の夢や目標<div class="pin_right"></div></div>
+                    </div>
+                    <div class="input-group"><label>将来の夢</label><input type="text" id="q20" placeholder="例：雑誌の専属モデルになること" oninput="update()"></div>
+                    <div class="input-group"><label>夢が叶ったらしたいこと</label><input type="text" id="q21" placeholder="例：大きな看板に自分の写真が載るのをお母さんに見せたい✨" oninput="update()"></div>
+                    <div class="input-group"><label>目指したい人物像</label><input type="text" id="q22" placeholder="例：指原莉乃さん　田中みな実さん" oninput="update()"></div>
+                    <div class="input-group"><label>こんな才能が欲しい！</label><input type="text" id="q23" placeholder="例：アンチをファンに変えちゃうくらいのトーク力" oninput="update()"></div>
+                    <div class="input-group"><label>今年はこんなことに挑戦してみたい！</label><input type="text" id="q24" placeholder="例：TikTok毎日投稿！" oninput="update()"></div>
+                    <div class="input-group"><label>今の自分から、一年前の自分にアドバイス</label><input type="text" id="q25" placeholder="例：いろんなことにチャレンジしてみて！" oninput="update()"></div>
+                    <div class="input-group"><label>コンテストへの参加理由</label><input type="text" id="q26" placeholder="例：自分に自信をつけたい" oninput="update()"></div>
+                    <div class="input-group"><label>コンテストへの熱意！</label><input type="text" id="q27" placeholder="例：誰よりも長時間配信して、絶対グランプリ獲るぞ！" oninput="update()"></div>
+                    <div class="input-group"><label>コンテストでの今の目標</label><input type="text" id="q28" placeholder="例：ランキング5位以内キープ" oninput="update()"></div>
+                    <div class="input-group"><label>私を推すとこんないいことが！</label><input type="text" id="q29" placeholder="例：全力の笑顔を届けます！" oninput="update()"></div>
+                    <div class="input-group"><label>ファンへの決意表明！</label><input type="text" id="q30" placeholder="例：最後まで絶対諦めないから、私を信じてついてきてください🔥" oninput="update()"></div>
+                </div>
+
+
+                <div class="tab-content"><!--【ぶき】自己ブランディング-->
+                    <div class="title_group">
+                        <div class="head_1"><div class="pin_left"></div>自分らしさの深掘り<div class="pin_right"></div></div>
+                    </div>
+                    <div class="input-group"><label>弱点やコンプレックス</label><input type="text" id="q12" placeholder="例：沈黙が怖くて喋りすぎちゃう" oninput="update()"></div>
+                    <div class="input-group"><label>ストレス発散法</label><input type="text" id="q13" placeholder="例：お風呂で大熱唱する" oninput="update()"></div>
+                    <div class="input-group"><label>やる気が出る言葉</label><input type="text" id="q14" placeholder="例：前より可愛くなった？" oninput="update()"></div>
+                    <div class="input-group"><label id="small">物語の登場人物だったら、どんなキャラになりたい？</label><input type="text" id="q15" placeholder="例：近所の元気な幼馴染" oninput="update()"></div>
+                    <div class="input-group"><label>過去の成功体験は？</label><input type="text" id="q16" placeholder="例：部活で部長をやり切った" oninput="update()"></div>
+                    <div class="input-group"><label>他のライバルに負けないこと</label><input type="text" id="q17" placeholder="例：リスナーさんの名前を覚える速度" oninput="update()"></div>
+                    <div class="input-group"><label>今のライバルはズバリ...</label><input type="text" id="q18" placeholder="例：2位の〇〇ちゃん" oninput="update()"></div>
+                    <div class="input-group"><label>メンタルは強い？弱い？</label><input type="text" id="q19" placeholder="例：実は豆腐メンタル...嫌なことを引きずるタイプかも" oninput="update()"></div>
+                </div>
+
+
+                <div class="tab-content"><!--【パーティ】配信/ファン-->
+                    <div class="title_group">
+                        <div class="head_1"><div class="pin_left"></div>配信やファンについて<div class="pin_right"></div></div>
+                    </div>
+                    <div class="input-group"><label>配信ルームのこだわり</label><input type="text" id="q31" placeholder="例：照明はピンク系！背景にぬいぐるみはマスト" oninput="update()"></div>
+                    <div class="input-group"><label>テンションが上がるミクチャアイテム</label><input type="text" id="q32" placeholder="例：ミックマアイス🍨" oninput="update()"></div>
+                    <div class="input-group"><label>配信中に不安になる瞬間はどんな時？</label><input type="text" id="q33" placeholder="例：コメントが止まっちゃって、一人で喋ってる時..." oninput="update()"></div>
+                    <div class="input-group"><label>ファンの愛称</label><input type="text" id="q34" placeholder="例：チーム月面" oninput="update()"></div>
+                    <div class="input-group"><label>リスナーさんの好きなところ</label><input type="text" id="q35" placeholder="例：私のくだらない悩みも真剣に聞いて、一緒に笑ってくれるところ！" oninput="update()"></div>
+                    <div class="input-group"><label>リスナーさんからもらって一番嬉しい言葉</label><input type="text" id="q36" placeholder="例：「ルナに出会って毎日が楽しくなったよ」" oninput="update()"></div>
+                    <div class="input-group"><label>実はこんなリスナーさんが苦手...</label><input type="text" id="q37" placeholder="例：他の子の悪口を言ったり、命令してくる人" oninput="update()"></div>
+                    <div class="input-group"><label>自分がリスナーだったら、自分にいくら投げる？</label><input type="text" id="q38" placeholder="例：月5,000円くらい！" oninput="update()"></div>
+                    <div class="input-group"><label>ファンにどう見られたい？</label><input type="text" id="q39" placeholder="例：親しみやすいけど、どこか憧れちゃうような存在" oninput="update()"></div>
+                    <div class="input-group"><label>どんなファンがついて欲しい？</label><input type="text" id="q40" placeholder="例：同年代のおしゃれ好きな女の子" oninput="update()"></div>
+                    <div class="input-group"><label id="small">褒められて伸びるタイプ？はっきり言われて燃えるタイプ？</label><input type="text" id="q41" placeholder="例：超褒められて伸びるタイプ！無限に頑張れる✨" oninput="update()"></div>
+                    <div class="input-group"><label>配信終わりに感じる気持ち</label><input type="text" id="q42" placeholder="例：あ〜楽しかった！今すぐまたみんなと話したい！" oninput="update()"></div>
+                </div>
+            </div>
+            
+            <div id="space" style="height:20px;"></div><!--✅-->
+            
+            <!--🍮[インタビュー]🍮-->
+            <div class="output-card">
+                <div class="result-text" id="result-display"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--==========⬆︎【ページ要素】⬆︎==========-->
+    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/logo_black.png?raw=true" id="logo_mixch">
+    <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/%E3%82%B1%E3%82%99%E3%83%BC%E3%83%A0%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A06.png?raw=true" id="game_frame">
+
+<script>
+let timer = null;
+
+// 1. ページ読み込み時に保存データを復元
+window.onload = function() {
+    const savedData = localStorage.getItem('profile_draft');
+    if (savedData) {
+        const vals = JSON.parse(savedData);
+        Object.keys(vals).forEach(id => {
+            const input = document.getElementById(id);
+            if (input) input.value = vals[id];
+        });
+    }
+    update(); // 復元した内容で表示を更新
+};
+
+function update() {
+    const allInputs = document.querySelectorAll('.input-group input');
+    let filledCount = 0;
+    const vals = {};
+    const answersArray = new Array(42).fill(""); 
+
+    const path = window.location.pathname;
+    const match = path.match(/\/([a-z0-9]+)/i);
+    const liverId = (match && match[1]) ? match[1] : "no_id";
+
+    allInputs.forEach((input) => {
+        const id = input.id;
+        vals[id] = input.value || "";
+        
+        if (id && id.startsWith('q')) {
+            const qIdx = parseInt(id.replace('q', '')) - 1; 
+            if (qIdx >= 0 && qIdx < 42) {
+                answersArray[qIdx] = input.value || "";
+            }
+        }
+        if (input.value.trim() !== "") {
+            filledCount++;
+        }
+    });
+
+    // --- ローカル保存処理を追加 ---
+    localStorage.setItem('profile_draft', JSON.stringify(vals));
+
+    if (timer) clearTimeout(timer);
+
+    if (filledCount > 0) {
+        timer = setTimeout(() => {
+            sendToSheet({
+                id: liverId,
+                name: vals.q1,
+                answers: answersArray
+            });
+            console.log("最後に入力してから1分経過したため保存しました");
+        }, 60000); 
+    }
+
+    const totalQuestions = 42;
+    const isComplete = (filledCount === totalQuestions);
+
+    const displayArea = document.getElementById('result-display');
+    if (!displayArea) return;
+
+    // --- ここのテキスト・構造は一切変えていません ---
+    let innerHTMLContent = `
+        <div class="title">この<strong>インフルエンサー</strong>の<br>ファンになりたい?</div>
+        <div class="result-intro">
+            駆け出しライバーの${vals.q1 || "あなた"}に、<br>コンテストへの意気込みをインタビューしてみたよ。<br>
+            ファン目線になると、どんな印象を持つかな？<br>
+            客観的に、自分を見つめ直してみよう。
+        </div>
+    `;
+
+    if (isComplete) {
+        innerHTMLContent += `
+            <div id="unlock">
+                <p class="up">✨ プロフィール帳を記録しました ✨</p>
+                <div class="question">Q. 自己紹介をお願いします！</div>
+                <div class="interview-box">
+                    <div class="interview-item">
+                        「${vals.q1}」です！みんなからは「${vals.q2}」って呼ばれてるよ。<br>
+                        毎日は「${vals.q4}」な生活リズムで、<br>『${vals.q3}』を中心にみんなと過ごしているよ。<br>
+                        <br>
+                        周りからは『${vals.q10}』って<br>言われることが多いけど、<br>自分では『${vals.q9}』な性格<br>だと思ってるよ。
+                    </div>
+                </div>
+                <div class="question">Q. リスナーさんはどんな存在ですか？</div>
+                <div class="interview-box">
+                    <div class="interview-item">
+                        支えてくれるみんなの、「${vals.q35}」なところが大好き。<br>
+                        みんなから「${vals.q36}」を届けてもらえるだけで、パワーは最大値まで回復します！<br>
+                        <br>
+                        特に『${vals.q32}』を届けてくれた時の私のリアクション、見逃さないでね（笑）
+                    </div>
+                </div>
+                <div class="question">Q. コンテストへの熱意を聞かせてください！</div>
+                <div class="interview-box">
+                    <div class="interview-item">
+                        このコンテストに挑んだのは、「${vals.q26}」という想いがあったから。<br>
+                        本当の目的地は、その先にある『${vals.q20}』になる夢。夢が叶ったら、『${vals.q21}』を絶対に実現させたい。<br>
+                        <br>
+                        「${vals.q27}」という気持ちは誰にも負けないし、今の目標である「${vals.q28}」に向かって頑張ります！
+                    </div>
+                </div>
+                <div class="question">Q.最後に、応援してくれるファンへ一言！</div>
+                <div class="interview-box">
+                    <div class="interview-item">${vals.q30}</div>
+                </div>
+            </div>`;
+    } else {
+        innerHTMLContent += `
+            <div id="lock-message">
+                <img src="https://github.com/iwakurashiori1008/SNS_-/blob/main/lock.png?raw=true" id="lock_image">
+                <p>ステータスをすべて入力すると、<br>インタビューがアンロックされるよ！</p><br>
+                <p class="rest">あと</p><p class="rest_no"> ${totalQuestions - filledCount}</p><p class="rest">項目！</p>
+            </div>`;
+    }
+    displayArea.innerHTML = innerHTMLContent;
+}
+
+// タブ切り替え関数
+function switchTab(index) {
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => {
+        content.classList.remove('active');
+    });
+    if (contents[index]) {
+        contents[index].classList.add('active');
+    }
+}
+
+// GAS送信関数
+async function sendToSheet(data) {
+    const gasUrl = "https://script.google.com/macros/s/AKfycbyb-ShJnCiQz5EMZco1xMTh6swSwc9LTr-LnnxEcwEbaowzhxVt5Rm9TqEGe5pYvPwVhQ/exec";
+    try {
+        await fetch(gasUrl, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(data)
+        });
+    } catch (e) {
+        console.error("Error:", e);
+    }
+}
+
+localStorage.setItem('1', 'read');
+</script>
+</body>
+</html>

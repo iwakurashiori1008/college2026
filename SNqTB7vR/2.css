@@ -1,0 +1,209 @@
+#monitor {
+    position: relative;
+    padding: 0;
+}
+#page_content {
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%); 
+    width: 90%;
+    margin: 0;  
+
+    .text_SS{
+        width:90%;
+        color:white;
+        padding:15px 10px;
+        border-radius: 15px;
+        margin-top:5px;
+    }
+
+}
+/*===============
+    冒険の地図
+===============*/
+.intro-tag {
+    display: inline-block;
+    font-family: 'denki';
+    background-color: #7C6FE0;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+/* マップ外枠 */
+.map-wrapper {
+    position: relative;
+    width:100%;
+    overflow: hidden;
+    line-height: 0;
+    border-radius:25px;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ピンのデザイン */
+.pin-point {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    background-image: url('https://github.com/iwakurashiori1008/SNS_-/blob/main/pin.png?raw=true');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 3px 5px white);
+}
+
+.pin-point:hover {
+    transform: scale(1.2) translateY(-5px);
+}
+
+/* モーダル */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    overflow-y: auto;
+    background-color: rgb(0, 0, 0,.7);
+    backdrop-filter: blur(10px);
+    margin: 25vh auto;
+    padding: 0;
+    border-radius: 15px;
+    border:3px solid white;
+    width: 80%;
+    max-height:50vh;
+    max-width: 420px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.modal-content::-webkit-scrollbar {width: 10px;}
+.modal-content::-webkit-scrollbar-track {background-color:transparent;}
+
+
+@keyframes modalFadeIn {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    color: #ccc;
+    cursor: pointer;
+    z-index: 11;
+    transition: color 0.2s;
+}
+
+/* 記事の装飾 */
+.article-body {
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.article-title {
+    width:80%;
+    margin:0 auto;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px dashed white;
+}
+
+.article-text {
+    font-size:13px;
+    line-height: 1.5;
+    color:white;
+    text-align: left;
+}
+.article-text .bold{
+    font-size:13.5px;
+    font-weight:bold;
+    color:#FFE14C;
+}
+
+.article-tag {
+    display: inline-block;
+    font-family:'denki';
+    color:#323232;
+    background-color: #FFE14C;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size:18px;
+    letter-spacing:1px;
+    margin-bottom: 10px;
+}
+
+.button_line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* aタグに幅を持たせる */
+.button_line a {
+    display: block; /* blockにして幅を有効化 */
+    width: 50%;    /* ボタンの横幅を55%に */
+    margin: 0;      /* 余計なマージンをリセット */
+    text-decoration: none; /* 下線を消す */
+    color:#323232;
+}
+
+/* ボタン本体はaタグの幅(55%)いっぱいに広がる */
+.analysis_button {
+    display: flex;
+    text-align: center;
+    width: 100%;    /* 親(aタグ)に対して100% */
+    height: 40px;   /* 高さを固定すると綺麗 */
+    line-height: 40px; /* 文字を上下中央に */
+    font-family: 'kiwami';
+    font-size: 1.7rem;
+    border-radius: 5px;
+    background-color: #EEEBF2;
+    overflow: hidden; /* 角丸からはみ出る背景色をカット */
+    transition: .2s;
+}
+.analysis_button:hover{
+    transform:scale(1.2);
+    box-shadow:0 3px 5px #323232;
+    font-size:2rem;
+    letter-spacing: .15em;
+}
+.analysis_button .left{
+    width:8%;
+    background-color:#7C6FE0;
+}
+.analysis_button .right{
+    width:95%;
+    text-align: center;
+
+}
+
+/* ボタン横のテキスト */
+.line_text {
+    width: 40%;    /* 残りの幅 */
+    padding-left: 10px;
+    font-size: 1.4rem;
+    color: white;
+    text-align: left;
+}
+
+@media(min-width:1000px){#page_content{top:15%;}}
